@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://co2hdmxclq8ly"]
+
+[ext_resource type="FontFile" uid="uid://bfpqn2fgpgb6q" path="res://Art/Fonts/itc-american-typewriter-medium/ITC American Typewriter Medium/ITC American Typewriter Medium.otf" id="1_0w7yd"]
+[ext_resource type="Script" uid="uid://c6nbeq6dksbki" path="res://interacting_component.gd" id="1_3rmx8"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_3rmx8"]
+
+[node name="InteractingComponent" type="Node3D" unique_id=86675925]
+script = ExtResource("1_3rmx8")
+
+[node name="Label3D" type="Label3D" parent="." unique_id=868173999]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5354872, 0.10428244, -1.1915952)
+text = "[E]"
+font = ExtResource("1_0w7yd")
+font_size = 20
+outline_size = 8
+
+[node name="ShapeCast3D" type="ShapeCast3D" parent="." unique_id=434541922]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+shape = SubResource("SphereShape3D_3rmx8")
+target_position = Vector3(0, 0, -10)
+collision_mask = 4
+collide_with_areas = true
+collide_with_bodies = false

@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://bkt70c7iwrgav"]
+
+[ext_resource type="Texture2D" uid="uid://cxg7j05uxb77j" path="res://Art/Desktop/bg.png" id="1_1rrs0"]
+[ext_resource type="Script" uid="uid://d004sayi1ggk8" path="res://pc_control.gd" id="1_odmnx"]
+[ext_resource type="Texture2D" uid="uid://b52b430blpug0" path="res://Art/cursor.png" id="1_viatp"]
+
+[node name="PCControl" type="Control" unique_id=2128943642]
+custom_minimum_size = Vector2(640, 480)
+custom_maximum_size = Vector2(640, 480)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.9984137, 1)
+script = ExtResource("1_odmnx")
+
+[node name="BG" type="TextureRect" parent="." unique_id=1047387137]
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+scale = Vector2(0.8994222, 0.8946145)
+texture = ExtResource("1_1rrs0")
+
+[node name="MouseCursor" type="Sprite2D" parent="." unique_id=1573137925]
+texture = ExtResource("1_viatp")

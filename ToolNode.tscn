@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://co71fwape7af3"]
+
+[ext_resource type="PackedScene" uid="uid://m1resugemelc" path="res://BuildingParts/StructuresFile/BackupExperimentStructures.glb" id="1_0rjw0"]
+
+[node name="ToolNode" type="Node" unique_id=1091455676]
+
+[node name="BackupExperimentStructures" parent="." unique_id=718700843 instance=ExtResource("1_0rjw0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0812742, 0, -0.7820935)

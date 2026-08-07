@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://doh0w0if3r85g"]
+
+[ext_resource type="Script" uid="uid://db84ewmj5td3v" path="res://character_new.gd" id="1_7egtf"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8wiiv"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_3y4jd"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_glpr6"]
+
+[node name="character" type="CharacterBody3D" unique_id=1717037615]
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("1_7egtf")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=289351842]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_8wiiv")
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="." unique_id=586279067]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_3y4jd")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1076120175]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+
+[node name="ShapeCast3D" type="ShapeCast3D" parent="Camera3D" unique_id=224686017]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+shape = SubResource("SphereShape3D_glpr6")
+target_position = Vector3(0, 0, -10)
+collision_mask = 4
+collide_with_areas = true
+collide_with_bodies = false

@@ -1,0 +1,76 @@
+[gd_scene format=4 uid="uid://dplnnv5jtfxyg"]
+
+[ext_resource type="Texture2D" uid="uid://b7mte7hxtawgj" path="res://BuildingParts/StructuresFile/BackupExperimentStructures_plaster_new_0018_01_tiled_s.jpg" id="1_y4f30"]
+[ext_resource type="Texture2D" uid="uid://hadaqaaydvvr" path="res://BuildingParts/StructuresFile/BackupExperimentStructures_white-wall-texture-background.jpg" id="2_iuee5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8e11i"]
+resource_name = "WallMat"
+cull_mode = 2
+albedo_texture = ExtResource("1_y4f30")
+roughness = 0.5
+texture_filter = 2
+metadata/_gltf_primary_texture_coord = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hyfml"]
+resource_name = "WhitePlaster"
+cull_mode = 2
+albedo_texture = ExtResource("2_iuee5")
+roughness = 0.5
+metadata/_gltf_primary_texture_coord = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_q5fyo"]
+_surfaces = [{
+"aabb": AABB(-1, 0, -0.091667525, 2, 2, 0.19652435),
+"format": 34359742465,
+"index_count": 54,
+"index_data": PackedByteArray("AAABAAIAAwACAAEABAADAAEAAAAEAAEABAAFAAMABQAGAAMAAwAGAAIABQAHAAYABwACAAYABwAAAAIABwAAAAAABwAHAAAABwAIAAAABwAJAAgAAAAIAAoAAAAKAAsACwALAAwACwAMAAwA"),
+"name": "WallMat",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 13,
+"vertex_data": PackedByteArray("AACAv8jMzD0vvLs9AACAvwAAAEAvvLu9AACAvwAAAEAvvLs9AACAPwAAAEAvvLu9AACAv8jMzD0vvLu9AACAP8jMzD0vvLu9AACAPwAAAEAvvLs9AACAP8jMzD0vvLs9AACAv8jMzD0uv9Y9AACAP8jMzD0uv9Y9AACAvwAAAAAuv9Y9AACAvwAAAAAvvLs9AACAPwAAAAAvvLs9")
+}, {
+"aabb": AABB(-1, 0, -0.091667525, 2, 0.099999964, 0.19652435),
+"format": 34359742465,
+"index_count": 54,
+"index_data": PackedByteArray("AAABAAIAAAACAAMAAAADAAQAAgAFAAMAAgABAAUAAQAFAAUAAQABAAUAAQAGAAUABwAAAAQAAAAHAAEABwAEAAgACAAIAAcACAAHAAcAAQAJAAYABwAJAAEACQAKAAYABwALAAkACQALAAoA"),
+"name": "WhitePlaster",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 12,
+"vertex_data": PackedByteArray("AACAvwAAAAAvvLu9AACAPwAAAAAvvLs9AACAPwAAAAAvvLu9AACAP8jMzD0vvLu9AACAv8jMzD0vvLu9AACAP8jMzD0vvLs9AACAP8jMzD0uv9Y9AACAvwAAAAAvvLs9AACAv8jMzD0vvLs9AACAPwAAAAAuv9Y9AACAv8jMzD0uv9Y9AACAvwAAAAAuv9Y9")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_bx5xb"]
+resource_name = "BackupExperimentStructures_Cube_003"
+_surfaces = [{
+"aabb": AABB(-1, 0, -0.091667525, 2, 2, 0.19652435),
+"attribute_data": PackedByteArray("ONMPP5I9gD+CFe8+YFOaPDjTDz9gU5o8ghXvPpI9gD9ALCi7PaF0PyiygD8ANgS7QCwouwA2BLsosoA/PaF0P5CDMz5C6ns/POmtPSC1QT2QgzM+ILVBPTzprT1C6ns/KLKAPz2hdD9ALCi7ADYEuyiygD8ANgS7QCwouz2hdD8osoA/ADYEu0AsKLsANgS7QCwouwA2BLsosoA/ADYEuw5Pkb1z5lY/Dk+Rvfy9YT8OT5G9/L1hPw5Pkb1z5lY/n3y+PurfxD6ffL4+6t/EPp98vj7q38Q+n3y+PurfxD6ffL4+6t/EPp98vj7q38Q+n3y+PurfxD6ffL4+6t/EPttXvj7q38Q+8Uu+Pry2GT7bV74+vLYZPvFLvj7q38Q+"),
+"format": 34359742487,
+"index_count": 54,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUAGAAZABoAGAAbABkAHAAdAB4AHAAfAB0AIAAhACIAIAAjACEA"),
+"material": SubResource("StandardMaterial3D_8e11i"),
+"name": "WallMat",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 36,
+"vertex_data": PackedByteArray("AACAv8jMzD0vvLs9AACAvwAAAEAvvLu9AACAvwAAAEAvvLs9AACAv8jMzD0vvLu9AACAv8jMzD0vvLu9AACAPwAAAEAvvLu9AACAvwAAAEAvvLu9AACAP8jMzD0vvLu9AACAP8jMzD0vvLu9AACAPwAAAEAvvLs9AACAPwAAAEAvvLu9AACAP8jMzD0vvLs9AACAP8jMzD0vvLs9AACAvwAAAEAvvLs9AACAPwAAAEAvvLs9AACAv8jMzD0vvLs9AACAPwAAAEAvvLu9AACAvwAAAEAvvLs9AACAvwAAAEAvvLu9AACAPwAAAEAvvLs9AACAv8jMzD0vvLs9AACAvwAAAAAuv9Y9AACAvwAAAAAvvLs9AACAv8jMzD0uv9Y9AACAP8jMzD0vvLs9AACAv8jMzD0vvLs9AACAv8jMzD0vvLs9AACAP8jMzD0vvLs9AACAvwAAAAAvvLs9AACAPwAAAAAvvLs9AACAPwAAAAAvvLs9AACAvwAAAAAvvLs9AACAP8jMzD0vvLs9AACAv8jMzD0uv9Y9AACAv8jMzD0vvLs9AACAP8jMzD0uv9Y9AAD/f/9//78AAP9//3//vwAA/3//f/+/AAD/f/9//7//////////P/////////8//////////z//////////P////3//////////f/////////9//////////3///////3//f////7//f/9/////v/9//3////+//3//f////7//f///////v/9///////+//3///////7//f///////vwAA/3////+/AAD/f////78AAP9/////vwAA/3////+//3///////7//f///////v/9///////+//3///////7//f///////v/9///////+//3///////7//f///////v/9//////////3//////////f/////////9/////////")
+}, {
+"aabb": AABB(-1, 0, -0.091667525, 2, 0.099999964, 0.19652435),
+"attribute_data": PackedByteArray("Zow0Pvy9YT8nsj0//L1hPyeyPT/8vWE/Zow0Pvy9YT8nsj0//L1hPyeyPT9z5lY/J7I9P3PmVj8nsj0//L1hPyeyPT/8vWE/J7I9P3PmVj8nsj0/c+ZWPyeyPT/8vWE/Zow0Pvy9YT8nsj0/c+ZWP2aMND5z5lY/J7I9P/y9YT/I5NU+Vvk6P7iQrT77uio/qNDUPv5SKj+bM64+FDo7P2aMND5z5lY/Zow0Pvy9YT9mjDQ+/L1hP2aMND5z5lY/J7I9P/y9YT9mjDQ+c+ZWPyeyPT9z5lY/Zow0Pvy9YT8nsj0//L1hPyeyPT9z5lY/J7I9P3PmVj8nsj0//L1hP+r+vz5aRc8+t7y8PtzrBD7q/r8+3OsEPre8vD5aRc8+"),
+"format": 34359742487,
+"index_count": 54,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUAGAAZABoAGAAbABkAHAAdAB4AHAAfAB0AIAAhACIAIAAjACEA"),
+"material": SubResource("StandardMaterial3D_hyfml"),
+"name": "WhitePlaster",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 36,
+"vertex_data": PackedByteArray("AACAvwAAAAAvvLu9AACAPwAAAAAvvLs9AACAPwAAAAAvvLu9AACAvwAAAAAvvLs9AACAPwAAAAAvvLs9AACAP8jMzD0vvLs9AACAP8jMzD0vvLs9AACAPwAAAAAvvLs9AACAPwAAAAAvvLu9AACAP8jMzD0vvLs9AACAP8jMzD0vvLu9AACAPwAAAAAvvLs9AACAvwAAAAAvvLu9AACAP8jMzD0vvLu9AACAv8jMzD0vvLu9AACAPwAAAAAvvLu9AACAvwAAAAAvvLs9AACAv8jMzD0vvLu9AACAv8jMzD0vvLs9AACAvwAAAAAvvLu9AACAv8jMzD0vvLs9AACAvwAAAAAvvLs9AACAvwAAAAAvvLs9AACAv8jMzD0vvLs9AACAPwAAAAAuv9Y9AACAv8jMzD0uv9Y9AACAP8jMzD0uv9Y9AACAvwAAAAAuv9Y9AACAPwAAAAAvvLs9AACAP8jMzD0uv9Y9AACAP8jMzD0vvLs9AACAPwAAAAAuv9Y9AACAvwAAAAAvvLs9AACAPwAAAAAuv9Y9AACAPwAAAAAvvLs9AACAvwAAAAAuv9Y9/38AAP///7//fwAA////v/9/AAD///+//38AAP///7//f///////v/9///////+//3///////7//f///////v////3////+/////f////7////9/////v////3////+//////////z//////////P/////////8//////////z8AAP9//39BvwAA/3//f16/AAD/f/9/KL8AAP9//393v/9///////+//3///////7//f///////v/9///////+//3//f////7//f/9/////v/9//3////+//3//f////7////9/////v////3////+/////f////7////9/////v/9/AAD//////38AAP//////fwAA//////9/AAD/////")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_q5fyo")
+
+[node name="Wall" type="MeshInstance3D" unique_id=2105888993]
+mesh = SubResource("ArrayMesh_bx5xb")

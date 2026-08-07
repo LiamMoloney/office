@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://js33v40gdpnx"]
+
+[ext_resource type="PackedScene" uid="uid://m1resugemelc" path="res://BuildingParts/StructuresFile/BackupExperimentStructures.glb" id="1_4lp3n"]
+
+[node name="Node3D" type="Node3D" unique_id=789852882]
+
+[node name="BackupExperimentStructures" parent="." unique_id=44666617 instance=ExtResource("1_4lp3n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.60751927, 0, -0.108145)
+
+[editable path="BackupExperimentStructures"]
