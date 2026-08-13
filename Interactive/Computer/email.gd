@@ -14,3 +14,15 @@ func _process(delta: float) -> void:
 func _on_button_pressed() -> void:
 	queue_free()
 	pass # Replace with function body.
+
+
+func _on_call_button_pressed() -> void:
+	pass # Replace with function body.
+
+
+func _on_report_button_pressed() -> void:
+	pass # Replace with function body.
+
+
+func _on_skip_button_pressed() -> void:
+	pass # Replace with function body.

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://brfxp1b6rvc6x"]
 
 [ext_resource type="Script" uid="uid://l5o3gtjby7pr" path="res://Interactive/Computer/email.gd" id="1_1uy1e"]
+[ext_resource type="FontFile" uid="uid://bfpqn2fgpgb6q" path="res://Art/Fonts/itc-american-typewriter-medium/ITC American Typewriter Medium/ITC American Typewriter Medium.otf" id="2_al6kl"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ks3gp"]
 content_margin_left = 0.0
@@ -85,6 +86,42 @@ corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 corner_detail = 5
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_axb4d"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.4318659, 0.99999994, 0.40065557, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lb44d"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 0.36862746, 0.3019608, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lnte5"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.5372544, 0.6465788, 1, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_flltr"]
 content_margin_left = 0.0
 content_margin_top = 0.0
@@ -146,7 +183,7 @@ offset_bottom = 40.0
 grow_horizontal = 0
 alignment = 2
 
-[node name="Button" type="Button" parent="Panel/MarginContainer/ScreenVTopBar/TopBar/HBoxContainer" unique_id=1563794067]
+[node name="xButton" type="Button" parent="Panel/MarginContainer/ScreenVTopBar/TopBar/HBoxContainer" unique_id=1563794067]
 custom_minimum_size = Vector2(15, 15)
 custom_maximum_size = Vector2(25, 25)
 layout_mode = 2
@@ -173,14 +210,75 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_1uy1e")
 
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel/MarginContainer/ScreenVTopBar/Application/InboxManage/EmailSummary" unique_id=1414539637]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("2_al6kl")
+text = "from leads@corporate.corporation-leads.co.com
+Client: Johns Campfires has run out of wood and WOOD like to order 72 reams to keep the fire going.
+
+Client info:
+John has a long history of violence and loves baking"
+
 [node name="Buttons" type="Panel" parent="Panel/MarginContainer/ScreenVTopBar/Application/InboxManage" unique_id=1279203313]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_al6kl")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/ScreenVTopBar/Application/InboxManage/Buttons" unique_id=133365305]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CallButton" type="Button" parent="Panel/MarginContainer/ScreenVTopBar/Application/InboxManage/Buttons/HBoxContainer" unique_id=1969152365]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_axb4d")
+text = "DIAL PHONE"
+
+[node name="ReportButton" type="Button" parent="Panel/MarginContainer/ScreenVTopBar/Application/InboxManage/Buttons/HBoxContainer" unique_id=992878561]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_lb44d")
+text = "  REPORT  "
+
+[node name="SkipButton" type="Button" parent="Panel/MarginContainer/ScreenVTopBar/Application/InboxManage/Buttons/HBoxContainer" unique_id=1439953930]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_lnte5")
+text = "   SKIP   "
 
 [node name="EmailDisplay" type="Panel" parent="Panel/MarginContainer/ScreenVTopBar/Application" unique_id=631508254]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_flltr")
 
-[connection signal="pressed" from="Panel/MarginContainer/ScreenVTopBar/TopBar/HBoxContainer/Button" to="." method="_on_button_pressed"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel/MarginContainer/ScreenVTopBar/Application/EmailDisplay" unique_id=1942637211]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("2_al6kl")
+text = "Create a database of customer attribute + notes that go along with customer. The email contains a lead and the company notes about the client."
+
+[connection signal="pressed" from="Panel/MarginContainer/ScreenVTopBar/TopBar/HBoxContainer/xButton" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Panel/MarginContainer/ScreenVTopBar/Application/InboxManage/Buttons/HBoxContainer/CallButton" to="." method="_on_call_button_pressed"]
+[connection signal="pressed" from="Panel/MarginContainer/ScreenVTopBar/Application/InboxManage/Buttons/HBoxContainer/ReportButton" to="." method="_on_report_button_pressed"]
+[connection signal="pressed" from="Panel/MarginContainer/ScreenVTopBar/Application/InboxManage/Buttons/HBoxContainer/SkipButton" to="." method="_on_skip_button_pressed"]
