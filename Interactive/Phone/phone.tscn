@@ -1,0 +1,211 @@
+[gd_scene format=3 uid="uid://c6888pkamggyi"]
+
+[ext_resource type="Script" uid="uid://b43f5m3wc3vex" path="res://Interactive/Phone/phone.gd" id="1_3olcy"]
+[ext_resource type="Texture2D" uid="uid://bvajqkfirnvuu" path="res://Art/mats/Texturelabs_Fabric_189S.jpg" id="2_1pg07"]
+[ext_resource type="PackedScene" uid="uid://dlwtf6nxewpve" path="res://Interactive/interactable.tscn" id="2_c02x5"]
+[ext_resource type="FontFile" uid="uid://bfpqn2fgpgb6q" path="res://Art/Fonts/itc-american-typewriter-medium/ITC American Typewriter Medium/ITC American Typewriter Medium.otf" id="3_font"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ddmlk"]
+top_radius = 0.55
+bottom_radius = 0.55
+height = 0.125
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gdpo5"]
+albedo_texture = ExtResource("2_1pg07")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c02x5"]
+albedo_color = Color(0.48178947, 0.48178947, 0.48178947, 1)
+albedo_texture = ExtResource("2_1pg07")
+
+[sub_resource type="TorusMesh" id="TorusMesh_3olcy"]
+lightmap_size_hint = Vector2i(33, 9)
+material = SubResource("StandardMaterial3D_c02x5")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1pg07"]
+albedo_texture = ExtResource("2_1pg07")
+
+[sub_resource type="BoxMesh" id="BoxMesh_j7vot"]
+material = SubResource("StandardMaterial3D_1pg07")
+size = Vector3(2.65, 0.5, 3.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_3olcy"]
+material = SubResource("StandardMaterial3D_1pg07")
+size = Vector3(0.5, 0.1, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5ox5x"]
+albedo_texture = ExtResource("2_1pg07")
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_o4j0v"]
+material = SubResource("StandardMaterial3D_5ox5x")
+height = 0.5
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ddmlk"]
+size = Vector3(0.35, 0.2, 0.3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gdpo5"]
+size = Vector3(0.35, 0.1, 0.4)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j7vot"]
+albedo_color = Color(0, 0.32156864, 0, 0.1254902)
+metallic_specular = 1.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_ddmlk"]
+material = SubResource("StandardMaterial3D_j7vot")
+
+[node name="PhoneScene" type="StaticBody3D" unique_id=1273220450 groups=["office_phone"]]
+script = ExtResource("1_3olcy")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1071955138]
+transform = Transform3D(0.10080001, 0, 0, 0, 0.24000001, 0, 0, 0, 0.096, -0.27649993, -0.19775, -0.06666668)
+mesh = SubResource("CylinderMesh_ddmlk")
+surface_material_override/0 = SubResource("StandardMaterial3D_gdpo5")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="." unique_id=18732185]
+transform = Transform3D(-2.517776e-09, -7.553328e-09, 0.120000005, -0.05760001, -7.553328e-09, -5.2453664e-09, 2.5177767e-09, -0.17279999, -5.245367e-09, -0.37747565, -0.19775003, -0.06666668)
+mesh = SubResource("TorusMesh_3olcy")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=446547867]
+transform = Transform3D(0.10080001, 0, 0, 0, 0.24000001, 0, 0, 0, 0.096, -0.46649992, -0.19775, -0.06666668)
+mesh = SubResource("CylinderMesh_ddmlk")
+surface_material_override/0 = SubResource("StandardMaterial3D_gdpo5")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="." unique_id=1871216577]
+transform = Transform3D(0.14400002, 0, 0, 0, 0.24000001, 0, 0, 0, 0.096, -0.3712997, -0.25775, -0.13866669)
+mesh = SubResource("BoxMesh_j7vot")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="." unique_id=612630901]
+transform = Transform3D(0.14400002, 0, 0, 0, 0.24000001, 0, 0, 0, 0.096, -0.43249956, -0.1857499, -0.2506667)
+mesh = SubResource("BoxMesh_3olcy")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="." unique_id=1747579450]
+transform = Transform3D(0.14400002, 0, 0, 0, 0.24000001, 0, 0, 0, 0.13440005, -0.31249937, -0.24574988, -0.2106667)
+mesh = SubResource("CylinderMesh_o4j0v")
+
+[node name="Interactable" parent="." unique_id=348607495 instance=ExtResource("2_c02x5")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactable" unique_id=759309528]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3569628, -0.24999999, -0.15)
+shape = SubResource("BoxShape3D_ddmlk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1479206572]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.375, -0.24999997, -0.15000002)
+shape = SubResource("BoxShape3D_gdpo5")
+
+[node name="CallReadyLight" type="MeshInstance3D" parent="." unique_id=345029252]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, -0.205418, -0.19977042, 0)
+visible = false
+mesh = SubResource("SphereMesh_ddmlk")
+
+[node name="CallReadyLamp" type="OmniLight3D" parent="CallReadyLight" unique_id=1182349761]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0.021905899, 0.94156814, -0.11195183)
+light_color = Color(0, 0.54525805, 2.8878452e-07, 1)
+omni_range = 1.565
+
+[node name="PhoneDialog" type="CanvasLayer" parent="." unique_id=1036302987]
+visible = false
+
+[node name="Panel" type="Panel" parent="PhoneDialog" unique_id=1011043230]
+offset_left = 120.0
+offset_top = 240.0
+offset_right = 680.0
+offset_bottom = 620.0
+
+[node name="DialogLabel" type="Label" parent="PhoneDialog/Panel" unique_id=600920001]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 10.0
+offset_right = 548.0
+offset_bottom = 118.0
+theme_override_fonts/font = ExtResource("3_font")
+text = "No number loaded."
+autowrap_mode = 2
+
+[node name="InfoLabel" type="Label" parent="PhoneDialog/Panel" unique_id=20730606]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 126.0
+offset_right = 548.0
+offset_bottom = 148.0
+theme_override_fonts/font = ExtResource("3_font")
+
+[node name="OpinionBar" type="Control" parent="PhoneDialog/Panel" unique_id=1683802903]
+anchors_preset = 0
+offset_left = 12.0
+offset_top = 154.0
+offset_right = 238.0
+offset_bottom = 172.0
+
+[node name="Red" type="ColorRect" parent="PhoneDialog/Panel/OpinionBar" unique_id=1680092815]
+layout_mode = 0
+offset_right = 73.0
+offset_bottom = 18.0
+color = Color(0.75, 0.08, 0.06, 1)
+
+[node name="White" type="ColorRect" parent="PhoneDialog/Panel/OpinionBar" unique_id=1050622980]
+layout_mode = 0
+offset_left = 73.0
+offset_right = 147.0
+offset_bottom = 18.0
+color = Color(0.92, 0.88, 0.78, 1)
+
+[node name="Green" type="ColorRect" parent="PhoneDialog/Panel/OpinionBar" unique_id=107605750]
+layout_mode = 0
+offset_left = 147.0
+offset_right = 220.0
+offset_bottom = 18.0
+color = Color(0.08, 0.65, 0.18, 1)
+
+[node name="Indicator" type="ColorRect" parent="PhoneDialog/Panel/OpinionBar" unique_id=188275891]
+layout_mode = 0
+offset_left = 107.0
+offset_top = -3.0
+offset_right = 113.0
+offset_bottom = 21.0
+color = Color(0, 0, 0, 1)
+
+[node name="Option1Button" type="Button" parent="PhoneDialog/Panel" unique_id=1135476140]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 184.0
+offset_right = 548.0
+offset_bottom = 224.0
+theme_override_fonts/font = ExtResource("3_font")
+text = "-"
+
+[node name="Option2Button" type="Button" parent="PhoneDialog/Panel" unique_id=239391891]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 230.0
+offset_right = 548.0
+offset_bottom = 270.0
+theme_override_fonts/font = ExtResource("3_font")
+text = "-"
+
+[node name="Option3Button" type="Button" parent="PhoneDialog/Panel" unique_id=642036855]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 276.0
+offset_right = 548.0
+offset_bottom = 316.0
+theme_override_fonts/font = ExtResource("3_font")
+text = "-"
+
+[node name="PassButton" type="Button" parent="PhoneDialog/Panel" unique_id=2039729378]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 330.0
+offset_right = 170.0
+offset_bottom = 366.0
+theme_override_fonts/font = ExtResource("3_font")
+text = "Say Nothing"
+
+[node name="CloseSaleButton" type="Button" parent="PhoneDialog/Panel" unique_id=1733455275]
+layout_mode = 0
+offset_left = 398.0
+offset_top = 330.0
+offset_right = 548.0
+offset_bottom = 366.0
+theme_override_fonts/font = ExtResource("3_font")
+text = "Close Sale"
+
+[connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]

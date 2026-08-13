@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://bhu67lcgdbfn5"]
+
+[ext_resource type="Script" uid="uid://bsbxbnh5cwl2e" path="res://Interactive/Printer/printer.gd" id="1_printer"]
+[ext_resource type="PackedScene" uid="uid://dlwtf6nxewpve" path="res://Interactive/interactable.tscn" id="2_interactable"]
+
+[sub_resource type="BoxMesh" id="PrinterBodyMesh"]
+size = Vector3(0.7, 0.3, 0.45)
+
+[sub_resource type="StandardMaterial3D" id="PrinterBodyMat"]
+albedo_color = Color(0.18, 0.18, 0.2, 1)
+
+[sub_resource type="BoxMesh" id="PaperMesh"]
+size = Vector3(0.46, 0.03, 0.28)
+
+[sub_resource type="StandardMaterial3D" id="PaperMat"]
+albedo_color = Color(0.9, 0.9, 0.84, 1)
+
+[sub_resource type="BoxMesh" id="ButtonMesh"]
+size = Vector3(0.12, 0.04, 0.12)
+
+[sub_resource type="StandardMaterial3D" id="ButtonMat"]
+albedo_color = Color(0.05, 0.6, 0.18, 1)
+
+[sub_resource type="BoxShape3D" id="InteractShape"]
+size = Vector3(0.9, 0.55, 0.7)
+
+[node name="PrinterScene" type="StaticBody3D" unique_id=1514152638 groups=["office_printer"]]
+script = ExtResource("1_printer")
+
+[node name="Body" type="MeshInstance3D" parent="." unique_id=78272086]
+mesh = SubResource("PrinterBodyMesh")
+surface_material_override/0 = SubResource("PrinterBodyMat")
+
+[node name="Paper" type="MeshInstance3D" parent="." unique_id=920299146]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.17, -0.05)
+mesh = SubResource("PaperMesh")
+surface_material_override/0 = SubResource("PaperMat")
+
+[node name="PrintButton" type="MeshInstance3D" parent="." unique_id=1523121023]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.24, 0.18, 0.12)
+mesh = SubResource("ButtonMesh")
+surface_material_override/0 = SubResource("ButtonMat")
+
+[node name="Interactable" parent="." unique_id=1867132925 instance=ExtResource("2_interactable")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactable" unique_id=617255630]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+shape = SubResource("InteractShape")
+
+[connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]

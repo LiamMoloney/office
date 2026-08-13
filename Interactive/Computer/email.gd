@@ -1,8 +1,5 @@
 extends Control
 
-@onready var mouse_cursor: Sprite2D = $MouseCursor
-
-var pc_mouse_pos : Vector2 = Vector2.ZERO
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -13,8 +10,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-func update_cursor_pos():
-	mouse_cursor.position = pc_mouse_pos
 
-func _input(event: InputEvent) -> void:
-	pass
+func _on_button_pressed() -> void:
+	queue_free()
+	pass # Replace with function body.

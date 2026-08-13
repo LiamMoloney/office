@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://bkt70c7iwrgav"]
+
+[ext_resource type="Texture2D" uid="uid://cxg7j05uxb77j" path="res://Art/Desktop/bg.png" id="1_1rrs0"]
+[ext_resource type="Script" uid="uid://d004sayi1ggk8" path="res://Interactive/Computer/pc_control.gd" id="1_odmnx"]
+[ext_resource type="Texture2D" uid="uid://b52b430blpug0" path="res://Art/cursor.png" id="1_viatp"]
+[ext_resource type="PackedScene" uid="uid://dpbsh565by13w" path="res://icon.tscn" id="4_1povo"]
+
+[node name="PCControl" type="Control" unique_id=2128943642]
+custom_minimum_size = Vector2(800, 600)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 800.0
+offset_bottom = 600.0
+script = ExtResource("1_odmnx")
+
+[node name="BG" type="TextureRect" parent="." unique_id=1047387137]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("1_1rrs0")
+expand_mode = 1
+
+[node name="Icon" parent="." unique_id=1216887816 instance=ExtResource("4_1povo")]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 48.0
+offset_right = 144.0
+offset_bottom = 144.0
+
+[node name="MouseCursor" type="Sprite2D" parent="." unique_id=1573137925]
+z_index = 100
+position = Vector2(33, 32)
+texture = ExtResource("1_viatp")
+centered = false
+offset = Vector2(-15, -15)
+region_rect = Rect2(0, 0, 64, 64)

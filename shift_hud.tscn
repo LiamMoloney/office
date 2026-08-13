@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://daaenrnue106o"]
+
+[ext_resource type="Script" uid="uid://cp6bwkr8cr4bm" path="res://shift_hud.gd" id="1_shift_hud"]
+[ext_resource type="FontFile" uid="uid://bfpqn2fgpgb6q" path="res://Art/Fonts/itc-american-typewriter-medium/ITC American Typewriter Medium/ITC American Typewriter Medium.otf" id="2_font"]
+
+[node name="ShiftHUD" type="CanvasLayer" unique_id=1023331863]
+script = ExtResource("1_shift_hud")
+
+[node name="MoneyLabel" type="Label" parent="." unique_id=669227535]
+offset_left = 12.0
+offset_top = 10.0
+offset_right = 160.0
+offset_bottom = 50.0
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 28
+text = "$0"

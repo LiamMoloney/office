@@ -14,6 +14,10 @@ config/name="OfficeShade"
 run/main_scene="uid://dkdjwtv63q4n1"
 config/features=PackedStringArray("4.7", "Forward Plus")
 
+[autoload]
+
+Global="*uid://ob4k0nwqoaqm"
+
 [display]
 
 window/stretch/mode="canvas_items"

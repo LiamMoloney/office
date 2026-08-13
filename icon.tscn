@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://dpbsh565by13w"]
+
+[ext_resource type="Texture2D" uid="uid://d8e5ijrp1b51" path="res://Art/Desktop/emailIcon.png" id="1_hqyvl"]
+
+[node name="Icon" type="Button" unique_id=1216887816]
+custom_minimum_size = Vector2(80, 96)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 80.0
+offset_bottom = 96.0
+mouse_default_cursor_shape = 2
+flat = true
+
+[node name="IconTexture" type="TextureRect" parent="." unique_id=1137615404]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 6.0
+offset_right = 64.0
+offset_bottom = 54.0
+mouse_filter = 2
+texture = ExtResource("1_hqyvl")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="." unique_id=946152952]
+layout_mode = 0
+offset_top = 58.0
+offset_right = 80.0
+offset_bottom = 96.0
+mouse_filter = 2
+text = "ICON"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2

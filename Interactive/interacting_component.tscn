@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://co2hdmxclq8ly"]
 
 [ext_resource type="FontFile" uid="uid://bfpqn2fgpgb6q" path="res://Art/Fonts/itc-american-typewriter-medium/ITC American Typewriter Medium/ITC American Typewriter Medium.otf" id="1_0w7yd"]
-[ext_resource type="Script" uid="uid://c6nbeq6dksbki" path="res://interacting_component.gd" id="1_3rmx8"]
+[ext_resource type="Script" uid="uid://c6nbeq6dksbki" path="res://Interactive/interacting_component.gd" id="1_3rmx8"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_3rmx8"]
 
