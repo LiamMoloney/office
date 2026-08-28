@@ -17,8 +17,7 @@ config/features=PackedStringArray("4.7", "Forward Plus")
 [autoload]
 
 GameManager="*uid://imju0ghg4lv1"
-SaleStatus="*uid://r4v6qbk45ho4"
-JimManager="*uid://bgh72nwy1wr0q"
+GameContext="*res://Globals/game_context.gd"
 
 [display]
 

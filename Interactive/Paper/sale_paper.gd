@@ -10,6 +10,8 @@ class_name SalePaper
 var holder: Player
 var is_held := false
 var is_stapled := false
+var sale := {}
+var payout := 0
 var body_collision_layer := 0
 var body_collision_mask := 0
 var interactable_collision_layer := 0
@@ -19,10 +21,11 @@ func _ready() -> void:
 	body_collision_mask = collision_mask
 	interactable_collision_layer = interactable.collision_layer
 	stapled_marker.visible = false
-	SaleStatus.sale_changed.connect(_on_sale_changed)
 
-func setup(company_name: String) -> void:
-	company_label.text = "%s Sale" % company_name
+func setup(sale_data: Dictionary) -> void:
+	sale = sale_data.duplicate(true)
+	payout = int(sale.get("payout", 0))
+	company_label.text = "%s Sale" % sale.get("company", "Unknown Company")
 
 func get_pickup_type() -> String:
 	return "paper"
@@ -33,10 +36,12 @@ func staple() -> void:
 
 	is_stapled = true
 	stapled_marker.visible = true
-	SaleStatus.mark_report_stapled()
 
 func is_ready_for_stanley() -> bool:
-	return is_stapled and SaleStatus.currSaleState == SaleStatus.SaleState.TURN_IN_REPORT
+	return is_stapled
+
+func get_payout() -> int:
+	return payout
 
 func turn_in() -> void:
 	if holder:
@@ -67,7 +72,7 @@ func _on_interactable_interacted(actor: Node) -> void:
 		return
 
 	var player := actor as Player
-	if SaleStatus.currSaleState == SaleStatus.SaleState.STAPLE_REPORT and player.is_holding_pickup_type("stapler"):
+	if player.is_holding_pickup_type("stapler"):
 		staple()
 		return
 
@@ -107,7 +112,3 @@ func _reparent_to_world() -> void:
 
 	scale = saved_scale
 	global_rotation = saved_rotation
-
-func _on_sale_changed() -> void:
-	if SaleStatus.currSaleState == SaleStatus.SaleState.NONE:
-		turn_in()

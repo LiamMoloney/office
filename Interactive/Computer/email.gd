@@ -19,7 +19,7 @@ const HEADER_TEXT_COLOR := Color.BLACK
 var selected_email := {}
 
 func _ready() -> void:
-	SaleStatus.sale_changed.connect(_rebuild_email_list)
+	GameContext.emails_changed.connect(_rebuild_email_list)
 	_rebuild_email_list()
 
 func _on_button_pressed() -> void:
@@ -30,7 +30,7 @@ func _rebuild_email_list() -> void:
 		email_list.remove_child(child)
 		child.queue_free()
 
-	var emails := SaleStatus.get_daily_emails()
+	var emails := GameContext.get_daily_emails()
 	if !emails.has(selected_email):
 		selected_email = emails[0] if !emails.is_empty() else {}
 
@@ -118,7 +118,7 @@ func _on_delete_button_pressed() -> void:
 
 	var email_to_delete := selected_email
 	selected_email = {}
-	SaleStatus.delete_daily_email(email_to_delete)
+	GameContext.delete_daily_email(email_to_delete)
 
 func _on_report_button_pressed() -> void:
 	if selected_email.is_empty():
@@ -126,4 +126,4 @@ func _on_report_button_pressed() -> void:
 
 	var email_to_report := selected_email
 	selected_email = {}
-	SaleStatus.report_daily_email(email_to_report)
+	GameContext.report_daily_email(email_to_report)

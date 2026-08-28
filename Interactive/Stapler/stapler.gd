@@ -4,6 +4,8 @@ class_name StaplerStatic
 @export var held_rotation_offset_degrees := Vector3(0.0, 90.0, 0.0)
 
 @onready var interactable: Interactable = $Interactable
+@onready var sabotagable: Sabotagable = $Sabotagable
+@onready var jello_mesh: MeshInstance3D = $JelloMesh
 
 var holder: Player
 var is_held := false
@@ -15,6 +17,9 @@ func _ready() -> void:
 	body_collision_layer = collision_layer
 	body_collision_mask = collision_mask
 	interactable_collision_layer = interactable.collision_layer
+	if !sabotagable.sabotage_changed.is_connected(_on_sabotagable_sabotage_changed):
+		sabotagable.sabotage_changed.connect(_on_sabotagable_sabotage_changed)
+	_sync_sabotaged_state()
 	freeze = true
 
 func get_pickup_type() -> String:
@@ -43,7 +48,7 @@ func _on_interactable_interacted(actor: Node) -> void:
 		return
 
 	var player := actor as Player
-	if SaleStatus.currSaleState == SaleStatus.SaleState.STAPLE_REPORT and player.is_holding_pickup_type("paper"):
+	if player.is_holding_pickup_type("paper"):
 		var held_paper = player.get_held_item()
 		if held_paper != null and held_paper.has_method("staple"):
 			held_paper.staple()
@@ -86,3 +91,24 @@ func _reparent_to_world() -> void:
 
 	scale = saved_scale
 	global_rotation = saved_rotation
+
+func is_sabotaged() -> bool:
+	return sabotagable.sabotaged
+
+func jello() -> void:
+	jello_mesh.visible = true
+
+func unjello() -> void:
+	jello_mesh.visible = false
+
+func _on_sabotagable_sabotage_changed(is_sabotaged: bool) -> void:
+	if is_sabotaged:
+		jello()
+	else:
+		unjello()
+
+func _sync_sabotaged_state() -> void:
+	if sabotagable.sabotaged:
+		jello()
+	else:
+		unjello()

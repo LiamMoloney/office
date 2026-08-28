@@ -80,7 +80,9 @@ surface_material_override/0 = SubResource("ButtonMat")
 transform = Transform3D(-4.3711385e-08, -1.0000008, -4.371139e-08, 0, -4.3711424e-08, 1, -0.99999994, 4.3711424e-08, 1.9106855e-15, 0.001879029, 0.023866266, 0)
 mesh = SubResource("QuadMesh_ddmlk")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="PrintButton/MeshInstance3D" unique_id=546859446]
+[node name="PaperOnQueueLight" type="OmniLight3D" parent="PrintButton/MeshInstance3D" unique_id=1980484668]
+transform = Transform3D(1.0000001, -1.0658141e-14, -8.881786e-15, 3.5527137e-15, 0.9999991, 4.658817e-22, 8.881784e-15, 0, 1, 0.010195732, 0.0015791282, -0.0068444014)
+light_color = Color(0, 1, 0, 1)
 
 [node name="Interactable" parent="." unique_id=1867132925 instance=ExtResource("2_interactable")]
 
