@@ -1,16 +1,121 @@
 [gd_scene format=3 uid="uid://daaenrnue106o"]
 
 [ext_resource type="Script" uid="uid://cp6bwkr8cr4bm" path="res://shift_hud.gd" id="1_shift_hud"]
+[ext_resource type="Shader" uid="uid://lisrrjggfm6f" path="res://FlashText.gdshader" id="2_7owhw"]
 [ext_resource type="FontFile" uid="uid://bfpqn2fgpgb6q" path="res://Art/Fonts/itc-american-typewriter-medium/ITC American Typewriter Medium/ITC American Typewriter Medium.otf" id="2_font"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ddmlk"]
+shader = ExtResource("2_7owhw")
+shader_parameter/flash_color = Color(4.813075e-08, 0.8820328, 0.09084479, 1)
+shader_parameter/flash_value = 0.0
+
+[sub_resource type="Animation" id="Animation_7owhw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MoneyLabel:material:shader_parameter/flash_value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MoneyLabel:theme_override_font_sizes/font_size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [28]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MoneyLabel:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_w5qdt"]
+resource_name = "Textflash"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MoneyLabel:material:shader_parameter/flash_value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.36666667, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.40000000596048, 1.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MoneyLabel:theme_override_font_sizes/font_size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.26666668, 0.43333334),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [28, 50, 28]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MoneyLabel:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.17, 0.34, 0.59, 0.72),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.40317106, 0.1605703, -0.3228859, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cfkxa"]
+_data = {
+&"RESET": SubResource("Animation_7owhw"),
+&"Textflash": SubResource("Animation_w5qdt")
+}
 
 [node name="ShiftHUD" type="CanvasLayer" unique_id=1023331863]
 script = ExtResource("1_shift_hud")
 
 [node name="MoneyLabel" type="Label" parent="." unique_id=669227535]
+material = SubResource("ShaderMaterial_ddmlk")
 offset_left = 12.0
 offset_top = 10.0
-offset_right = 160.0
+offset_right = 260.0
 offset_bottom = 50.0
 theme_override_fonts/font = ExtResource("2_font")
 theme_override_font_sizes/font_size = 28
 text = "$0"
+
+[node name="MonthlyMoneyLabel" type="Label" parent="." unique_id=1107591837]
+visible = false
+offset_left = 12.0
+offset_top = 46.0
+offset_right = 260.0
+offset_bottom = 86.0
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 28
+text = "Month: $0"
+
+[node name="GainPlayer" type="AnimationPlayer" parent="." unique_id=1625377825]
+libraries/ = SubResource("AnimationLibrary_cfkxa")

@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dpsleaga47u3v"]
+
+[ext_resource type="Texture2D" uid="uid://63u807iwrlo4" path="res://Art/MatsMaker/carpet_orm.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://m3avvncxyeuw" path="res://Art/MatsMaker/carpet_normal.png" id="3"]
+
+[resource]
+roughness_texture = ExtResource("2")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("3")

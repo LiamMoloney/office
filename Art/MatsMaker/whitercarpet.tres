@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bep04bem8ngp0"]
+
+[ext_resource type="Texture2D" uid="uid://csv6mi1a7dfaw" path="res://Art/MatsMaker/whitercarpet_albedo.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://b7mu6npck8xdv" path="res://Art/MatsMaker/whitercarpet_orm.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://c1toavlt0wmw0" path="res://Art/MatsMaker/whitercarpet_normal.png" id="3"]
+
+[resource]
+albedo_color = Color(0.796243, 0.796243, 0.796243, 1)
+albedo_texture = ExtResource("1")
+roughness_texture = ExtResource("2")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("3")

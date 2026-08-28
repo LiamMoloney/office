@@ -4,6 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://bvajqkfirnvuu" path="res://Art/mats/Texturelabs_Fabric_189S.jpg" id="2_1pg07"]
 [ext_resource type="PackedScene" uid="uid://dlwtf6nxewpve" path="res://Interactive/interactable.tscn" id="2_c02x5"]
 [ext_resource type="FontFile" uid="uid://bfpqn2fgpgb6q" path="res://Art/Fonts/itc-american-typewriter-medium/ITC American Typewriter Medium/ITC American Typewriter Medium.otf" id="3_font"]
+[ext_resource type="PackedScene" uid="uid://d3wr0euj8d6sj" path="res://dialog.tscn" id="4_dialog"]
+[ext_resource type="FontFile" uid="uid://bbnykwaomph22" path="res://Art/Fonts/ds_digital/DS-DIGIB.TTF" id="5_digital"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_ddmlk"]
 top_radius = 0.55
@@ -51,6 +53,39 @@ metallic_specular = 1.0
 
 [sub_resource type="SphereMesh" id="SphereMesh_ddmlk"]
 material = SubResource("StandardMaterial3D_j7vot")
+
+[sub_resource type="Gradient" id="Gradient_2l0oi"]
+offsets = PackedFloat32Array(0, 0.23011364, 0.4715909, 0.50284094, 0.53409094, 0.75284094, 1)
+colors = PackedColorArray(1, 0, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0.078431375, 0.75686276, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ddmlk"]
+gradient = SubResource("Gradient_2l0oi")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxDialNormal"]
+bg_color = Color(0.18, 0.18, 0.18, 0.88)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxDialHover"]
+bg_color = Color(0.26, 0.26, 0.26, 0.94)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.65, 1, 0.65, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxDialPressed"]
+bg_color = Color(0.1, 0.1, 0.1, 0.96)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
 
 [node name="PhoneScene" type="StaticBody3D" unique_id=1273220450 groups=["office_phone"]]
 script = ExtResource("1_3olcy")
@@ -102,110 +137,259 @@ light_color = Color(0, 0.54525805, 2.8878452e-07, 1)
 omni_range = 1.565
 
 [node name="PhoneDialog" type="CanvasLayer" parent="." unique_id=1036302987]
-visible = false
 
-[node name="Panel" type="Panel" parent="PhoneDialog" unique_id=1011043230]
-offset_left = 120.0
-offset_top = 240.0
-offset_right = 680.0
-offset_bottom = 620.0
+[node name="Dialog" parent="PhoneDialog" unique_id=1231485504 instance=ExtResource("4_dialog")]
 
-[node name="DialogLabel" type="Label" parent="PhoneDialog/Panel" unique_id=600920001]
-layout_mode = 0
-offset_left = 12.0
-offset_top = 10.0
-offset_right = 548.0
-offset_bottom = 118.0
+[node name="FirstImpressionBar" type="Control" parent="PhoneDialog" unique_id=1683802903]
+layout_mode = 3
+anchor_left = 0.06
+anchor_top = 0.68
+anchor_right = 0.5
+anchor_bottom = 0.72
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Track" type="TextureRect" parent="PhoneDialog/FirstImpressionBar" unique_id=317602105]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.91338015
+anchor_bottom = 1.0
+offset_right = -0.09411621
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_ddmlk")
+expand_mode = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="ImpressionButton" type="Button" parent="PhoneDialog/FirstImpressionBar" unique_id=1308661096]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.25
+anchor_right = 0.9151673
+anchor_bottom = 2.291666
 theme_override_fonts/font = ExtResource("3_font")
-text = "No number loaded."
-autowrap_mode = 2
+text = "Make First Impression"
+metadata/_edit_use_anchors_ = true
 
-[node name="InfoLabel" type="Label" parent="PhoneDialog/Panel" unique_id=20730606]
-layout_mode = 0
-offset_left = 12.0
-offset_top = 126.0
-offset_right = 548.0
-offset_bottom = 148.0
-theme_override_fonts/font = ExtResource("3_font")
+[node name="KeypadArea" type="VBoxContainer" parent="PhoneDialog" unique_id=20730606]
+custom_minimum_size = Vector2(156, 0)
+anchors_preset = -1
+anchor_left = 0.78
+anchor_top = 0.1
+anchor_right = 0.95
+anchor_bottom = 0.48
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 8
 
-[node name="OpinionBar" type="Control" parent="PhoneDialog/Panel" unique_id=1683802903]
-anchors_preset = 0
-offset_left = 12.0
-offset_top = 154.0
-offset_right = 238.0
-offset_bottom = 172.0
-
-[node name="Red" type="ColorRect" parent="PhoneDialog/Panel/OpinionBar" unique_id=1680092815]
-layout_mode = 0
-offset_right = 73.0
-offset_bottom = 18.0
-color = Color(0.75, 0.08, 0.06, 1)
-
-[node name="White" type="ColorRect" parent="PhoneDialog/Panel/OpinionBar" unique_id=1050622980]
-layout_mode = 0
-offset_left = 73.0
-offset_right = 147.0
-offset_bottom = 18.0
-color = Color(0.92, 0.88, 0.78, 1)
-
-[node name="Green" type="ColorRect" parent="PhoneDialog/Panel/OpinionBar" unique_id=107605750]
-layout_mode = 0
-offset_left = 147.0
-offset_right = 220.0
-offset_bottom = 18.0
-color = Color(0.08, 0.65, 0.18, 1)
-
-[node name="Indicator" type="ColorRect" parent="PhoneDialog/Panel/OpinionBar" unique_id=188275891]
-layout_mode = 0
-offset_left = 107.0
-offset_top = -3.0
-offset_right = 113.0
-offset_bottom = 21.0
+[node name="DialDisplay" type="ColorRect" parent="PhoneDialog/KeypadArea" unique_id=110345031]
+custom_minimum_size = Vector2(156, 38)
+layout_mode = 2
+size_flags_horizontal = 0
 color = Color(0, 0, 0, 1)
 
-[node name="Option1Button" type="Button" parent="PhoneDialog/Panel" unique_id=1135476140]
-layout_mode = 0
-offset_left = 12.0
-offset_top = 184.0
-offset_right = 548.0
-offset_bottom = 224.0
-theme_override_fonts/font = ExtResource("3_font")
-text = "-"
+[node name="NumberLabel" type="Label" parent="PhoneDialog/KeypadArea/DialDisplay" unique_id=110345032]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 1, 0.18, 1)
+theme_override_fonts/font = ExtResource("5_digital")
+theme_override_font_sizes/font_size = 30
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Option2Button" type="Button" parent="PhoneDialog/Panel" unique_id=239391891]
-layout_mode = 0
-offset_left = 12.0
-offset_top = 230.0
-offset_right = 548.0
-offset_bottom = 270.0
-theme_override_fonts/font = ExtResource("3_font")
-text = "-"
+[node name="DialPad" type="GridContainer" parent="PhoneDialog/KeypadArea" unique_id=246328612]
+custom_minimum_size = Vector2(156, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/h_separation = 6
+theme_override_constants/v_separation = 6
+columns = 3
 
-[node name="Option3Button" type="Button" parent="PhoneDialog/Panel" unique_id=642036855]
-layout_mode = 0
-offset_left = 12.0
-offset_top = 276.0
-offset_right = 548.0
-offset_bottom = 316.0
+[node name="Dial1Button" type="Button" parent="PhoneDialog/KeypadArea/DialPad" unique_id=1135476140]
+custom_minimum_size = Vector2(48, 42)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.72, 0.72, 0.72, 1)
+theme_override_colors/font_hover_color = Color(0.65, 1, 0.65, 1)
+theme_override_colors/font_pressed_color = Color(0.65, 1, 0.65, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("3_font")
-text = "-"
+theme_override_styles/normal = SubResource("StyleBoxDialNormal")
+theme_override_styles/hover = SubResource("StyleBoxDialHover")
+theme_override_styles/pressed = SubResource("StyleBoxDialPressed")
+text = "1"
 
-[node name="PassButton" type="Button" parent="PhoneDialog/Panel" unique_id=2039729378]
-layout_mode = 0
-offset_left = 12.0
-offset_top = 330.0
-offset_right = 170.0
-offset_bottom = 366.0
+[node name="Dial2Button" type="Button" parent="PhoneDialog/KeypadArea/DialPad" unique_id=239391891]
+custom_minimum_size = Vector2(48, 42)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.72, 0.72, 0.72, 1)
+theme_override_colors/font_hover_color = Color(0.65, 1, 0.65, 1)
+theme_override_colors/font_pressed_color = Color(0.65, 1, 0.65, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("3_font")
-text = "Say Nothing"
+theme_override_styles/normal = SubResource("StyleBoxDialNormal")
+theme_override_styles/hover = SubResource("StyleBoxDialHover")
+theme_override_styles/pressed = SubResource("StyleBoxDialPressed")
+text = "2"
 
-[node name="CloseSaleButton" type="Button" parent="PhoneDialog/Panel" unique_id=1733455275]
-layout_mode = 0
-offset_left = 398.0
-offset_top = 330.0
-offset_right = 548.0
-offset_bottom = 366.0
+[node name="Dial3Button" type="Button" parent="PhoneDialog/KeypadArea/DialPad" unique_id=642036855]
+custom_minimum_size = Vector2(48, 42)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.72, 0.72, 0.72, 1)
+theme_override_colors/font_hover_color = Color(0.65, 1, 0.65, 1)
+theme_override_colors/font_pressed_color = Color(0.65, 1, 0.65, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("3_font")
-text = "Close Sale"
+theme_override_styles/normal = SubResource("StyleBoxDialNormal")
+theme_override_styles/hover = SubResource("StyleBoxDialHover")
+theme_override_styles/pressed = SubResource("StyleBoxDialPressed")
+text = "3"
+
+[node name="Dial4Button" type="Button" parent="PhoneDialog/KeypadArea/DialPad" unique_id=2039729378]
+custom_minimum_size = Vector2(48, 42)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.72, 0.72, 0.72, 1)
+theme_override_colors/font_hover_color = Color(0.65, 1, 0.65, 1)
+theme_override_colors/font_pressed_color = Color(0.65, 1, 0.65, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_styles/normal = SubResource("StyleBoxDialNormal")
+theme_override_styles/hover = SubResource("StyleBoxDialHover")
+theme_override_styles/pressed = SubResource("StyleBoxDialPressed")
+text = "4"
+
+[node name="Dial5Button" type="Button" parent="PhoneDialog/KeypadArea/DialPad" unique_id=1733455275]
+custom_minimum_size = Vector2(48, 42)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.72, 0.72, 0.72, 1)
+theme_override_colors/font_hover_color = Color(0.65, 1, 0.65, 1)
+theme_override_colors/font_pressed_color = Color(0.65, 1, 0.65, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_styles/normal = SubResource("StyleBoxDialNormal")
+theme_override_styles/hover = SubResource("StyleBoxDialHover")
+theme_override_styles/pressed = SubResource("StyleBoxDialPressed")
+text = "5"
+
+[node name="Dial6Button" type="Button" parent="PhoneDialog/KeypadArea/DialPad" unique_id=600920001]
+custom_minimum_size = Vector2(48, 42)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.72, 0.72, 0.72, 1)
+theme_override_colors/font_hover_color = Color(0.65, 1, 0.65, 1)
+theme_override_colors/font_pressed_color = Color(0.65, 1, 0.65, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_styles/normal = SubResource("StyleBoxDialNormal")
+theme_override_styles/hover = SubResource("StyleBoxDialHover")
+theme_override_styles/pressed = SubResource("StyleBoxDialPressed")
+text = "6"
+
+[node name="Dial7Button" type="Button" parent="PhoneDialog/KeypadArea/DialPad" unique_id=110345021]
+custom_minimum_size = Vector2(48, 42)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.72, 0.72, 0.72, 1)
+theme_override_colors/font_hover_color = Color(0.65, 1, 0.65, 1)
+theme_override_colors/font_pressed_color = Color(0.65, 1, 0.65, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_styles/normal = SubResource("StyleBoxDialNormal")
+theme_override_styles/hover = SubResource("StyleBoxDialHover")
+theme_override_styles/pressed = SubResource("StyleBoxDialPressed")
+text = "7"
+
+[node name="Dial8Button" type="Button" parent="PhoneDialog/KeypadArea/DialPad" unique_id=110345022]
+custom_minimum_size = Vector2(48, 42)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.72, 0.72, 0.72, 1)
+theme_override_colors/font_hover_color = Color(0.65, 1, 0.65, 1)
+theme_override_colors/font_pressed_color = Color(0.65, 1, 0.65, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_styles/normal = SubResource("StyleBoxDialNormal")
+theme_override_styles/hover = SubResource("StyleBoxDialHover")
+theme_override_styles/pressed = SubResource("StyleBoxDialPressed")
+text = "8"
+
+[node name="Dial9Button" type="Button" parent="PhoneDialog/KeypadArea/DialPad" unique_id=110345023]
+custom_minimum_size = Vector2(48, 42)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.72, 0.72, 0.72, 1)
+theme_override_colors/font_hover_color = Color(0.65, 1, 0.65, 1)
+theme_override_colors/font_pressed_color = Color(0.65, 1, 0.65, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_styles/normal = SubResource("StyleBoxDialNormal")
+theme_override_styles/hover = SubResource("StyleBoxDialHover")
+theme_override_styles/pressed = SubResource("StyleBoxDialPressed")
+text = "9"
+
+[node name="ZeroLeftSpacer" type="Control" parent="PhoneDialog/KeypadArea/DialPad" unique_id=110345028]
+custom_minimum_size = Vector2(48, 42)
+layout_mode = 2
+
+[node name="Dial0Button" type="Button" parent="PhoneDialog/KeypadArea/DialPad" unique_id=110345029]
+custom_minimum_size = Vector2(48, 42)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.72, 0.72, 0.72, 1)
+theme_override_colors/font_hover_color = Color(0.65, 1, 0.65, 1)
+theme_override_colors/font_pressed_color = Color(0.65, 1, 0.65, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_styles/normal = SubResource("StyleBoxDialNormal")
+theme_override_styles/hover = SubResource("StyleBoxDialHover")
+theme_override_styles/pressed = SubResource("StyleBoxDialPressed")
+text = "0"
+
+[node name="ZeroRightSpacer" type="Control" parent="PhoneDialog/KeypadArea/DialPad" unique_id=110345030]
+custom_minimum_size = Vector2(48, 42)
+layout_mode = 2
+
+[node name="KeypadActions" type="HBoxContainer" parent="PhoneDialog/KeypadArea" unique_id=110345024]
+custom_minimum_size = Vector2(156, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/separation = 6
+
+[node name="CallButton" type="Button" parent="PhoneDialog/KeypadArea/KeypadActions" unique_id=110345025]
+custom_minimum_size = Vector2(75, 34)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.72, 0.72, 0.72, 1)
+theme_override_colors/font_hover_color = Color(0.65, 1, 0.65, 1)
+theme_override_colors/font_pressed_color = Color(0.65, 1, 0.65, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_styles/normal = SubResource("StyleBoxDialNormal")
+theme_override_styles/hover = SubResource("StyleBoxDialHover")
+theme_override_styles/pressed = SubResource("StyleBoxDialPressed")
+text = "Call"
+
+[node name="HangUpButton" type="Button" parent="PhoneDialog/KeypadArea/KeypadActions" unique_id=110345026]
+custom_minimum_size = Vector2(75, 34)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.72, 0.72, 0.72, 1)
+theme_override_colors/font_hover_color = Color(0.65, 1, 0.65, 1)
+theme_override_colors/font_pressed_color = Color(0.65, 1, 0.65, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_styles/normal = SubResource("StyleBoxDialNormal")
+theme_override_styles/hover = SubResource("StyleBoxDialHover")
+theme_override_styles/pressed = SubResource("StyleBoxDialPressed")
+text = "Hang Up"
 
 [connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]

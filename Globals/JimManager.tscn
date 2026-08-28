@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bgh72nwy1wr0q"]
+
+[ext_resource type="Script" uid="uid://c7dirvcnmqyka" path="res://Globals/jim_manager.gd" id="1_t5km1"]
+
+[node name="JimManager" type="Node" unique_id=402961523]
+script = ExtResource("1_t5km1")

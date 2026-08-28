@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://b0vgajy2xo4vc"]
+
+[ext_resource type="PackedScene" uid="uid://cm233ujkwodia" path="res://Art/Assets/JimothyAnimateTake3Best.glb" id="1_xiqef"]
+
+[node name="JimothyAnimateTake3Best" unique_id=1833340112 instance=ExtResource("1_xiqef")]

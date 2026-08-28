@@ -2,12 +2,21 @@
 
 [ext_resource type="Script" uid="uid://bsbxbnh5cwl2e" path="res://Interactive/Printer/printer.gd" id="1_printer"]
 [ext_resource type="PackedScene" uid="uid://dlwtf6nxewpve" path="res://Interactive/interactable.tscn" id="2_interactable"]
+[ext_resource type="Texture2D" uid="uid://dyfihy8vqslwh" path="res://Art/plastic_0038_01_s.jpg" id="2_kc75v"]
+[ext_resource type="Texture2D" uid="uid://xi0vyxe0gjga" path="res://Art/Fonts/itc-american-typewriter-medium/ITC American Typewriter Medium/plaster_new_0018_01_tiled_s.jpg" id="3_bfyc1"]
+[ext_resource type="Texture2D" uid="uid://bvajqkfirnvuu" path="res://Art/mats/Texturelabs_Fabric_189S.jpg" id="5_bfyc1"]
 
 [sub_resource type="BoxMesh" id="PrinterBodyMesh"]
-size = Vector3(0.7, 0.3, 0.45)
+size = Vector3(0.7, 0.7, 0.8)
 
 [sub_resource type="StandardMaterial3D" id="PrinterBodyMat"]
-albedo_color = Color(0.18, 0.18, 0.2, 1)
+albedo_texture = ExtResource("2_kc75v")
+
+[sub_resource type="BoxMesh" id="BoxMesh_8dg4q"]
+size = Vector3(0.7, 0.7, 0.15)
+
+[sub_resource type="BoxMesh" id="BoxMesh_5pqg3"]
+size = Vector3(0.7, 0.7, 0.01328125)
 
 [sub_resource type="BoxMesh" id="PaperMesh"]
 size = Vector3(0.46, 0.03, 0.28)
@@ -19,32 +28,72 @@ albedo_color = Color(0.9, 0.9, 0.84, 1)
 size = Vector3(0.12, 0.04, 0.12)
 
 [sub_resource type="StandardMaterial3D" id="ButtonMat"]
-albedo_color = Color(0.05, 0.6, 0.18, 1)
+albedo_color = Color(0.39373833, 0.5437891, 0.37146127, 1)
+albedo_texture = ExtResource("3_bfyc1")
+
+[sub_resource type="QuadMesh" id="QuadMesh_ddmlk"]
+size = Vector2(0.1, 0.1)
 
 [sub_resource type="BoxShape3D" id="InteractShape"]
-size = Vector3(0.9, 0.55, 0.7)
+size = Vector3(0.21367186, 0.32145995, 0.45000002)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n6ht6"]
+albedo_texture = ExtResource("5_bfyc1")
+
+[sub_resource type="BoxMesh" id="BoxMesh_ddmlk"]
+material = SubResource("StandardMaterial3D_n6ht6")
+size = Vector3(0.55, 0.006445313, 0.4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ddmlk"]
+size = Vector3(0.7, 0.7, 0.94697267)
 
 [node name="PrinterScene" type="StaticBody3D" unique_id=1514152638 groups=["office_printer"]]
 script = ExtResource("1_printer")
 
 [node name="Body" type="MeshInstance3D" parent="." unique_id=78272086]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.19999999, -0.17500003)
 mesh = SubResource("PrinterBodyMesh")
 surface_material_override/0 = SubResource("PrinterBodyMat")
 
+[node name="Body2" type="MeshInstance3D" parent="." unique_id=1158740732]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.19999999, -0.65000004)
+mesh = SubResource("BoxMesh_8dg4q")
+surface_material_override/0 = SubResource("PrinterBodyMat")
+
+[node name="Body3" type="MeshInstance3D" parent="." unique_id=1908601235]
+transform = Transform3D(1, 0, 0, 0, 0.49999997, -0.86602545, 0, 0.86602545, 0.49999997, 0, 0.32011405, -0.4176782)
+mesh = SubResource("BoxMesh_5pqg3")
+surface_material_override/0 = SubResource("PrinterBodyMat")
+
 [node name="Paper" type="MeshInstance3D" parent="." unique_id=920299146]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.17, -0.05)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.18211305, 0.063014135)
+visible = false
 mesh = SubResource("PaperMesh")
 surface_material_override/0 = SubResource("PaperMat")
 
 [node name="PrintButton" type="MeshInstance3D" parent="." unique_id=1523121023]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.24, 0.18, 0.12)
+transform = Transform3D(0.42261824, 0.9063078, 0, -0.9063078, 0.42261824, 0, 0, 0, 1, 0.39, 0.080000006, 0.12)
 mesh = SubResource("ButtonMesh")
 surface_material_override/0 = SubResource("ButtonMat")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PrintButton" unique_id=63624811]
+transform = Transform3D(-4.3711385e-08, -1.0000008, -4.371139e-08, 0, -4.3711424e-08, 1, -0.99999994, 4.3711424e-08, 1.9106855e-15, 0.001879029, 0.023866266, 0)
+mesh = SubResource("QuadMesh_ddmlk")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PrintButton/MeshInstance3D" unique_id=546859446]
 
 [node name="Interactable" parent="." unique_id=1867132925 instance=ExtResource("2_interactable")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Interactable" unique_id=617255630]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.34316406, -0.01427003, 0.024999991)
 shape = SubResource("InteractShape")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1140428512]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.025000006, 0.15322265, -0.45)
+mesh = SubResource("BoxMesh_ddmlk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1348550081]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9802322e-08, -0.19609377, -0.24975592)
+shape = SubResource("BoxShape3D_ddmlk")
 
 [connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]

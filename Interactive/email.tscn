@@ -1,0 +1,204 @@
+[gd_scene format=3 uid="uid://brfxp1b6rvc6x"]
+
+[ext_resource type="Script" uid="uid://l5o3gtjby7pr" path="res://Interactive/Computer/email.gd" id="1_1uy1e"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxWindow"]
+bg_color = Color(0.48555422, 0.7010943, 0.9937561, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxTop"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxClose"]
+bg_color = Color(1, 0.33551362, 0.2695955, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxEmailBody"]
+bg_color = Color(1, 1, 1, 1)
+content_margin_left = 14.0
+content_margin_top = 12.0
+content_margin_right = 14.0
+content_margin_bottom = 12.0
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[node name="Control" type="Control" unique_id=1378925127]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1uy1e")
+
+[node name="Panel" type="Panel" parent="." unique_id=8587638]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 48.0
+offset_top = 60.0
+offset_right = -48.0
+offset_bottom = -60.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxWindow")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel" unique_id=520910361]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+metadata/_edit_use_anchors_ = true
+
+[node name="ScreenVTopBar" type="VBoxContainer" parent="Panel/MarginContainer" unique_id=288425714]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="TopBar" type="Panel" parent="Panel/MarginContainer/ScreenVTopBar" unique_id=1505859036]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxTop")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/ScreenVTopBar/TopBar" unique_id=850684432]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 30.0
+grow_horizontal = 0
+alignment = 2
+
+[node name="xButton" type="Button" parent="Panel/MarginContainer/ScreenVTopBar/TopBar/HBoxContainer" unique_id=1563794067]
+custom_minimum_size = Vector2(22, 22)
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxClose")
+text = "X"
+icon_alignment = 1
+
+[node name="Application" type="Control" parent="Panel/MarginContainer/ScreenVTopBar" unique_id=1105689162]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Split" type="HBoxContainer" parent="Panel/MarginContainer/ScreenVTopBar/Application" unique_id=325682143]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 12
+
+[node name="InboxPanel" type="PanelContainer" parent="Panel/MarginContainer/ScreenVTopBar/Application/Split"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxTop")
+
+[node name="InboxScroll" type="ScrollContainer" parent="Panel/MarginContainer/ScreenVTopBar/Application/Split/InboxPanel" unique_id=1957787636]
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="DailyEmailList" type="VBoxContainer" parent="Panel/MarginContainer/ScreenVTopBar/Application/Split/InboxPanel/InboxScroll" unique_id=736192456]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 4
+
+[node name="EmailBodyPanel" type="PanelContainer" parent="Panel/MarginContainer/ScreenVTopBar/Application/Split"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxEmailBody")
+
+[node name="BodyVBox" type="VBoxContainer" parent="Panel/MarginContainer/ScreenVTopBar/Application/Split/EmailBodyPanel"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="EmptyLabel" type="Label" parent="Panel/MarginContainer/ScreenVTopBar/Application/Split/EmailBodyPanel/BodyVBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "No email selected."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HeaderRow" type="HBoxContainer" parent="Panel/MarginContainer/ScreenVTopBar/Application/Split/EmailBodyPanel/BodyVBox"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="HeaderText" type="VBoxContainer" parent="Panel/MarginContainer/ScreenVTopBar/Application/Split/EmailBodyPanel/BodyVBox/HeaderRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 2
+
+[node name="SenderLabel" type="Label" parent="Panel/MarginContainer/ScreenVTopBar/Application/Split/EmailBodyPanel/BodyVBox/HeaderRow/HeaderText"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "from@example.com"
+autowrap_mode = 3
+
+[node name="CompanyLabel" type="Label" parent="Panel/MarginContainer/ScreenVTopBar/Application/Split/EmailBodyPanel/BodyVBox/HeaderRow/HeaderText"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Company"
+autowrap_mode = 3
+
+[node name="ActionRow" type="HBoxContainer" parent="Panel/MarginContainer/ScreenVTopBar/Application/Split/EmailBodyPanel/BodyVBox/HeaderRow"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="ReportButton" type="Button" parent="Panel/MarginContainer/ScreenVTopBar/Application/Split/EmailBodyPanel/BodyVBox/HeaderRow/ActionRow"]
+custom_minimum_size = Vector2(68, 26)
+layout_mode = 2
+text = "Report"
+
+[node name="DeleteButton" type="Button" parent="Panel/MarginContainer/ScreenVTopBar/Application/Split/EmailBodyPanel/BodyVBox/HeaderRow/ActionRow"]
+custom_minimum_size = Vector2(28, 26)
+layout_mode = 2
+text = "X"
+
+[node name="PhoneLabel" type="Label" parent="Panel/MarginContainer/ScreenVTopBar/Application/Split/EmailBodyPanel/BodyVBox"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Phone: 00000"
+
+[node name="AttributesLabel" type="Label" parent="Panel/MarginContainer/ScreenVTopBar/Application/Split/EmailBodyPanel/BodyVBox"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Notes: Attribute, Attribute"
+autowrap_mode = 3
+
+[node name="BodyLabel" type="Label" parent="Panel/MarginContainer/ScreenVTopBar/Application/Split/EmailBodyPanel/BodyVBox"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Email body"
+autowrap_mode = 3
+
+[connection signal="pressed" from="Panel/MarginContainer/ScreenVTopBar/TopBar/HBoxContainer/xButton" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Panel/MarginContainer/ScreenVTopBar/Application/Split/EmailBodyPanel/BodyVBox/HeaderRow/ActionRow/ReportButton" to="." method="_on_report_button_pressed"]
+[connection signal="pressed" from="Panel/MarginContainer/ScreenVTopBar/Application/Split/EmailBodyPanel/BodyVBox/HeaderRow/ActionRow/DeleteButton" to="." method="_on_delete_button_pressed"]

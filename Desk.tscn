@@ -1,0 +1,76 @@
+[gd_scene format=3 uid="uid://1uggl3ql0nop"]
+
+[ext_resource type="Material" uid="uid://dsmdrae8py4sj" path="res://Art/MatsMaker/Wood.tres" id="1_kv1ut"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ddmlk"]
+material = ExtResource("1_kv1ut")
+size = Vector3(1, 0.05, 1.95)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_kv1ut"]
+load_path = "res://.godot/imported/Wood_albedo.png-849a8f918e30309914cba40c553877ca.s3tc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_0raqs"]
+load_path = "res://.godot/imported/Wood_heightmap.png-6935a0651919c7c21b0b2818842758f1.s3tc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ihjj6"]
+load_path = "res://.godot/imported/Wood_orm.png-dd56afbe217081a84edfeb713258456d.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vypyt"]
+albedo_texture = SubResource("CompressedTexture2D_kv1ut")
+roughness_texture = SubResource("CompressedTexture2D_ihjj6")
+roughness_texture_channel = 1
+heightmap_enabled = true
+heightmap_scale = 12.5
+heightmap_deep_parallax = true
+heightmap_min_layers = 8
+heightmap_max_layers = 32
+heightmap_texture = SubResource("CompressedTexture2D_0raqs")
+
+[sub_resource type="BoxMesh" id="BoxMesh_g3mx1"]
+material = SubResource("StandardMaterial3D_vypyt")
+size = Vector3(1, 0.45000002, 0.05)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_vypyt"]
+load_path = "res://.godot/imported/Wood_albedo.png-849a8f918e30309914cba40c553877ca.s3tc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_g3mx1"]
+load_path = "res://.godot/imported/Wood_heightmap.png-6935a0651919c7c21b0b2818842758f1.s3tc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_b6rpr"]
+load_path = "res://.godot/imported/Wood_orm.png-dd56afbe217081a84edfeb713258456d.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_leq2l"]
+albedo_texture = SubResource("CompressedTexture2D_vypyt")
+roughness_texture = SubResource("CompressedTexture2D_b6rpr")
+roughness_texture_channel = 1
+heightmap_enabled = true
+heightmap_scale = 12.5
+heightmap_deep_parallax = true
+heightmap_min_layers = 8
+heightmap_max_layers = 32
+heightmap_texture = SubResource("CompressedTexture2D_g3mx1")
+
+[sub_resource type="BoxMesh" id="BoxMesh_gxqb5"]
+material = SubResource("StandardMaterial3D_leq2l")
+size = Vector3(1, 0.45000002, 0.05)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ddmlk"]
+size = Vector3(1, 0.0984375, 2.05)
+
+[node name="YOURdesk" type="StaticBody3D" unique_id=705535084]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=147665026]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.17499995, 0.42499998, 0.025000006)
+mesh = SubResource("BoxMesh_ddmlk")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=655192535]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.17499995, 0.22500007, 1.0250001)
+mesh = SubResource("BoxMesh_g3mx1")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="." unique_id=1623729386]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.17499995, 0.22500007, -0.975)
+mesh = SubResource("BoxMesh_gxqb5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=671025475]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.16940916, 0.39921877, 0.030889899)
+shape = SubResource("BoxShape3D_ddmlk")

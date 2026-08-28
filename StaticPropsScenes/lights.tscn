@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://c01411cflsisc"]
+
+[ext_resource type="Material" uid="uid://deudcngrnrh7q" path="res://Art/MatsMaker/black_plastic.tres" id="1_g8bhh"]
+[ext_resource type="Material" uid="uid://t7me4noiv3ls" path="res://Art/MatsMaker/white_plastic.tres" id="2_y6vf6"]
+[ext_resource type="Script" uid="uid://qhll4q2ujonc" path="res://StaticPropsScenes/light_flicker.gd" id="3_light_flicker"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ljv1u"]
+material = ExtResource("1_g8bhh")
+size = Vector3(1.1, 0.05, 0.4)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ddmlk"]
+material = ExtResource("2_y6vf6")
+size = Vector3(1, 0.05, 0.3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j7vot"]
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 2.6
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ddmlk"]
+material = SubResource("StandardMaterial3D_j7vot")
+top_radius = 0.050000012
+bottom_radius = 0.050000012
+height = 0.890625
+
+[node name="Lights" type="StaticBody3D" unique_id=952210287 groups=["light"]]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("3_light_flicker")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1146029400]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.9604645e-08, 0.025000006, 1.4901161e-08)
+cast_shadow = 0
+mesh = SubResource("BoxMesh_ljv1u")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=464946013]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.024999995, 2.9802322e-08)
+cast_shadow = 0
+mesh = SubResource("BoxMesh_ddmlk")
+
+[node name="Bulb2" type="MeshInstance3D" parent="MeshInstance3D2" unique_id=472218315]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0.0234375, 1.8626451e-09, -0.05)
+cast_shadow = 0
+mesh = SubResource("CylinderMesh_ddmlk")
+
+[node name="Bulb3" type="MeshInstance3D" parent="MeshInstance3D2" unique_id=515381472]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0.0234375, 1.8626451e-09, 0.05)
+cast_shadow = 0
+mesh = SubResource("CylinderMesh_ddmlk")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="MeshInstance3D2" unique_id=140136222]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
+distance_fade_enabled = true
+spot_angle = 67.39
+
+[node name="OmniLight3D" type="OmniLight3D" parent="MeshInstance3D2" unique_id=261830394]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.10000001, 0)
+omni_range = 2.5

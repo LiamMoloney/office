@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://bm7mwsc03jgw5"]
+
+[ext_resource type="Script" uid="uid://d1ayajbh7s4jc" path="res://Interactive/Stapler/stapler.gd" id="1_stapler"]
+[ext_resource type="PackedScene" uid="uid://dlwtf6nxewpve" path="res://Interactive/interactable.tscn" id="2_interactable"]
+[ext_resource type="Material" uid="uid://deudcngrnrh7q" path="res://Art/MatsMaker/black_plastic.tres" id="2_ucs4y"]
+
+[sub_resource type="BoxShape3D" id="StaplerBodyShape"]
+size = Vector3(0.5, 0.15, 0.2)
+
+[sub_resource type="BoxMesh" id="StaplerBodyMesh"]
+material = ExtResource("2_ucs4y")
+size = Vector3(0.45, 0.12, 0.16)
+
+[sub_resource type="BoxMesh" id="BoxMesh_5xuo7"]
+material = ExtResource("2_ucs4y")
+size = Vector3(0.45, 0.12, 0.16)
+
+[sub_resource type="BoxMesh" id="StaplerMetalMesh"]
+size = Vector3(0.38, 0.03, 0.12)
+
+[sub_resource type="StandardMaterial3D" id="StaplerMetalMat"]
+albedo_color = Color(0.75, 0.76, 0.72, 1)
+
+[sub_resource type="BoxShape3D" id="InteractShape"]
+size = Vector3(0.8, 0.5, 0.6)
+
+[node name="StaplerScene" type="RigidBody3D" unique_id=518342129 groups=["office_stapler"]]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+script = ExtResource("1_stapler")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1705332088]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.035, 0)
+shape = SubResource("StaplerBodyShape")
+
+[node name="Body" type="MeshInstance3D" parent="." unique_id=1956193902]
+transform = Transform3D(1, 0, 0, 0, 0.7905694, 0, 0, 0, 0.7905694, 0, 0, 0)
+mesh = SubResource("StaplerBodyMesh")
+
+[node name="Body2" type="MeshInstance3D" parent="." unique_id=458418224]
+transform = Transform3D(0.9547608, -0.23509549, 0, 0.29737487, 0.7548047, 0, 0, 0, 0.7905694, 0, 0.099999994, 0)
+mesh = SubResource("BoxMesh_5xuo7")
+
+[node name="MetalStrip" type="MeshInstance3D" parent="." unique_id=310771961]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
+mesh = SubResource("StaplerMetalMesh")
+surface_material_override/0 = SubResource("StaplerMetalMat")
+
+[node name="Interactable" parent="." unique_id=1704745706 instance=ExtResource("2_interactable")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactable" unique_id=1241658923]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.099999994, 0)
+shape = SubResource("InteractShape")
+
+[connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]

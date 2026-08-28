@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://4cxhvrp7783y"]
+
+[ext_resource type="Script" uid="uid://cjjtspc2bokwa" path="res://email_database.gd" id="1_aakhd"]
+
+[node name="EmailDatabase" type="Node" unique_id=812875587]
+script = ExtResource("1_aakhd")

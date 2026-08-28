@@ -2,7 +2,9 @@
 
 [ext_resource type="Script" uid="uid://5ocyho3em765" path="res://Interactive/Computer/monitor.gd" id="1_fa1fk"]
 [ext_resource type="PackedScene" uid="uid://dlwtf6nxewpve" path="res://Interactive/interactable.tscn" id="1_qh22o"]
+[ext_resource type="Texture2D" uid="uid://dyfihy8vqslwh" path="res://Art/plastic_0038_01_s.jpg" id="3_6y5p7"]
 [ext_resource type="PackedScene" uid="uid://bkt70c7iwrgav" path="res://Interactive/Computer/pc_control.tscn" id="3_8qdrl"]
+[ext_resource type="PackedScene" uid="uid://cq4kjpy18ft84" path="res://StaticPropsScenes/office_pack/gLTF/monitor.glb" id="5_jaxwi"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ddmlk"]
 size = Vector3(0.05, 0.6, 0.8)
@@ -12,6 +14,7 @@ viewport_path = NodePath("SubViewport")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8qdrl"]
 resource_local_to_scene = true
+shading_mode = 0
 albedo_texture = SubResource("ViewportTexture_fa1fk")
 
 [sub_resource type="QuadMesh" id="QuadMesh_ddmlk"]
@@ -22,7 +25,8 @@ orientation = 0
 size = Vector3(0.36535645, 0.63668823, 0.82995605)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j7vot"]
-albedo_color = Color(0.4538818, 0.45700377, 0.3924226, 1)
+albedo_color = Color(0.3328807, 0.33288068, 0.33288068, 1)
+albedo_texture = ExtResource("3_6y5p7")
 
 [sub_resource type="BoxMesh" id="BoxMesh_fa1fk"]
 size = Vector3(0.36535645, 0.23728943, 0.5227585)
@@ -40,17 +44,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.006962776, 3.7252903e-08, 
 shape = SubResource("BoxShape3D_ddmlk")
 
 [node name="ScreenMesh" type="MeshInstance3D" parent="." unique_id=1894886138]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0017697811, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.9823285, 0.0017697811, 0.01960978, 0)
 material_override = SubResource("StandardMaterial3D_8qdrl")
+cast_shadow = 0
 mesh = SubResource("QuadMesh_ddmlk")
 
 [node name="Box" type="MeshInstance3D" parent="." unique_id=1108526619]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.18267822, 0.0028839111, 0.0014038086)
+visible = false
 mesh = SubResource("BoxMesh_ddmlk")
 surface_material_override/0 = SubResource("StandardMaterial3D_j7vot")
 
 [node name="Box2" type="MeshInstance3D" parent="." unique_id=959285646]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.18267822, -0.3737998, -0.01128006)
+visible = false
 mesh = SubResource("BoxMesh_fa1fk")
 surface_material_override/0 = SubResource("StandardMaterial3D_j7vot")
 
@@ -61,10 +68,13 @@ size = Vector2i(800, 600)
 [node name="PCControl" parent="SubViewport" unique_id=2128943642 instance=ExtResource("3_8qdrl")]
 
 [node name="PCCam" type="Camera3D" parent="." unique_id=668234160]
-transform = Transform3D(-2.9802322e-08, 0, 1, 0, 1, 0, -1, 0, -2.9802322e-08, 0.5, 0, 0)
+transform = Transform3D(-2.9802322e-08, 0, 1, 0, 1, 0, -1, 0, -2.9802322e-08, 0.55609965, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=182668613]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.19999999, -0.07499999, 2.9802322e-08)
 shape = SubResource("BoxShape3D_j7vot")
+
+[node name="monitor" parent="." unique_id=1271078774 instance=ExtResource("5_jaxwi")]
+transform = Transform3D(1, 0, 0, 0, 1.015852, 0, 0, 0, 0.7993541, -0.012436945, -0.4331899, 0)
 
 [connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]

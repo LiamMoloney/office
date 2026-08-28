@@ -13,8 +13,10 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var shape_cast: ShapeCast3D = $Camera3D/ShapeCast3D
 
 @onready var camera = $Camera3D
+@onready var hand: Node3D = $Camera3D/Hand
 ##Core Attributes
 var input_locked := false
+var held_item: Node3D
 
 ##Game Attirbutes
 var health = 100
@@ -37,6 +39,9 @@ func _input(event: InputEvent) -> void:
 		if target:
 			target.interact(self)
 
+	if event.is_action_pressed("drop_item"):
+		drop_held_item()
+
 func _get_interactable_target() -> Interactable:
 	shape_cast.force_shapecast_update()
 
@@ -55,7 +60,7 @@ func _unhandled_input(event):
 			rotate_y(-event.relative.x * .005)
 			camera.rotate_x(-event.relative.y * .005)
 			camera.rotation.x = clamp(camera.rotation.x, -PI/2, PI/2)
-	if event is InputEventMouseButton:
+	if !input_locked and event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT \
 		and event.pressed \
 		and Input.mouse_mode != Input.MOUSE_MODE_CAPTURED:
@@ -106,4 +111,47 @@ func _movement_input(delta):
 	if Input.mouse_mode==Input.MOUSE_MODE_CAPTURED: 
 		rotation_degrees=rotation_degrees.lerp(Vector3(input_dir.normalized().y*angle,rotation_degrees.y,-input_dir.normalized().x*angle),t)
 	
-	
+func pickup_item(item: Node3D) -> bool:
+	if get_held_item() != null:
+		return false
+
+	held_item = item
+	return true
+
+func clear_held_item(item: Node3D) -> void:
+	if held_item == item:
+		held_item = null
+
+func drop_held_item() -> void:
+	var item = get_held_item()
+	if item == null:
+		return
+
+	if item.has_method("drop_from"):
+		item.drop_from(self)
+	else:
+		clear_held_item(item)
+
+func get_held_item() -> Node3D:
+	if held_item != null and !is_instance_valid(held_item):
+		held_item = null
+
+	return held_item
+
+func is_holding_pickup_type(pickup_type: String) -> bool:
+	var item = get_held_item()
+	if item == null or !item.has_method("get_pickup_type"):
+		return false
+
+	return item.get_pickup_type() == pickup_type
+
+func get_hold_transform() -> Transform3D:
+	return hand.global_transform
+
+func get_hold_parent() -> Node3D:
+	return hand
+
+func get_drop_transform() -> Transform3D:
+	var drop_transform = get_hold_transform()
+	drop_transform.origin.y = maxf(drop_transform.origin.y, global_position.y + 0.35)
+	return drop_transform

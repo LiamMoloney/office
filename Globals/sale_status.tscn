@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://r4v6qbk45ho4"]
+
+[ext_resource type="Script" uid="uid://bhe7wht3gfoll" path="res://Globals/sale_status.gd" id="1_amesk"]
+
+[node name="SaleStatus" type="Node" unique_id=1402589291]
+script = ExtResource("1_amesk")

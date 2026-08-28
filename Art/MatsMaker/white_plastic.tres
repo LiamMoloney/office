@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://t7me4noiv3ls"]
+
+[ext_resource type="Texture2D" uid="uid://mbshj0tbg285" path="res://Art/MatsMaker/white_plastic_albedo.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://cuk3i2kxlnvqo" path="res://Art/MatsMaker/white_plastic_orm.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://brm6wowprel5h" path="res://Art/MatsMaker/white_plastic_normal.png" id="3"]
+
+[resource]
+albedo_color = Color(0.73046875, 0.73046875, 0.73046875, 1)
+albedo_texture = ExtResource("1")
+roughness_texture = ExtResource("2")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("3")

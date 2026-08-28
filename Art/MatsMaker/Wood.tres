@@ -1,0 +1,16 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dsmdrae8py4sj"]
+
+[ext_resource type="Texture2D" uid="uid://cj67es312l6m6" path="res://Art/MatsMaker/Wood_albedo.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://deemthpe83qhs" path="res://Art/MatsMaker/Wood_orm.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://6kifsaybvmey" path="res://Art/MatsMaker/Wood_heightmap.png" id="4"]
+
+[resource]
+albedo_texture = ExtResource("1")
+roughness_texture = ExtResource("2")
+roughness_texture_channel = 1
+heightmap_enabled = true
+heightmap_scale = 12.5
+heightmap_deep_parallax = true
+heightmap_min_layers = 8
+heightmap_max_layers = 32
+heightmap_texture = ExtResource("4")

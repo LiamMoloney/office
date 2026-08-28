@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://dikng8cw0witr"]
+
+[ext_resource type="Script" uid="uid://c1jtdktv2l8y2" path="res://Interactive/Paper/sale_paper.gd" id="1_paper"]
+[ext_resource type="PackedScene" uid="uid://dlwtf6nxewpve" path="res://Interactive/interactable.tscn" id="2_interactable"]
+[ext_resource type="FontFile" uid="uid://bfpqn2fgpgb6q" path="res://Art/Fonts/itc-american-typewriter-medium/ITC American Typewriter Medium/ITC American Typewriter Medium.otf" id="3_font"]
+
+[sub_resource type="BoxMesh" id="PaperMesh"]
+size = Vector3(0.5, 0.02, 0.3)
+
+[sub_resource type="StandardMaterial3D" id="PaperMat"]
+albedo_color = Color(0.96, 0.94, 0.86, 1)
+
+[sub_resource type="BoxShape3D" id="PaperBodyShape"]
+size = Vector3(0.50128174, 0.027441407, 0.30080077)
+
+[sub_resource type="BoxMesh" id="StapledMarkerMesh"]
+size = Vector3(0.12, 0.04, 0.06)
+
+[sub_resource type="StandardMaterial3D" id="StapledMarkerMat"]
+albedo_color = Color(0.08, 0.08, 0.09, 1)
+
+[sub_resource type="BoxShape3D" id="InteractShape"]
+size = Vector3(0.55, 0.1, 0.35)
+
+[node name="SalePaper" type="RigidBody3D" unique_id=1771109255 groups=["sale_paper"]]
+script = ExtResource("1_paper")
+
+[node name="PaperBody" type="MeshInstance3D" parent="." unique_id=1056897996]
+mesh = SubResource("PaperMesh")
+surface_material_override/0 = SubResource("PaperMat")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1380486346]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000101298094, 0.0012792973, 9.775162e-06)
+shape = SubResource("PaperBodyShape")
+
+[node name="CompanyLabel" type="Label3D" parent="." unique_id=617343989]
+transform = Transform3D(4.3711387e-10, -0.01, 4.3711404e-10, -8.742278e-10, 4.37114e-10, 0.01, -0.01, -4.371139e-10, -8.742278e-10, -0.2, 0.010252051, 0.13)
+modulate = Color(0.05, 0.05, 0.05, 1)
+text = "Sale Report"
+font = ExtResource("3_font")
+font_size = 320
+outline_size = 2
+horizontal_alignment = 0
+
+[node name="StapledMarker" type="MeshInstance3D" parent="." unique_id=683782844]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.22, 0.003359396, -0.13)
+visible = false
+mesh = SubResource("StapledMarkerMesh")
+surface_material_override/0 = SubResource("StapledMarkerMat")
+
+[node name="Interactable" parent="." unique_id=1403726518 instance=ExtResource("2_interactable")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactable" unique_id=107267266]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.025000036, 0.029999997, -1.4901161e-08)
+shape = SubResource("InteractShape")
+
+[connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]

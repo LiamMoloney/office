@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://bc77odngfo27a"]
+
+[ext_resource type="PackedScene" uid="uid://rxjmjmwpy0f3" path="res://StaticPropsScenes/office_pack/gLTF/office_chair.glb" id="1_ry5a0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_j7vot"]
+size = Vector3(0.76724243, 0.49731445, 0.6717224)
+
+[node name="Node3D" type="StaticBody3D" unique_id=1995564714]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="office_chair" parent="." unique_id=2009206385 instance=ExtResource("1_ry5a0")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1911431657]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0079193115, 0.26501465, -0.00038146973)
+shape = SubResource("BoxShape3D_j7vot")

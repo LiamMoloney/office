@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://dqkjxu3vyt64j"]
+
+[ext_resource type="Script" uid="uid://bjpno4xo5fosy" path="res://StaticPropsScenes/light_controller.gd" id="1_controller"]
+
+[node name="LightController" type="Node" unique_id=99490640]
+script = ExtResource("1_controller")
+
+[node name="Timer" type="Timer" parent="." unique_id=552957951]
