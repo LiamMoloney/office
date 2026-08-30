@@ -18,6 +18,7 @@ config/features=PackedStringArray("4.7", "Forward Plus")
 
 GameManager="*uid://imju0ghg4lv1"
 GameContext="*res://Globals/game_context.gd"
+EmailDatabase="*uid://4cxhvrp7783y"
 
 [display]
 
@@ -61,6 +62,16 @@ drop_item={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":81,"key_label":0,"unicode":113,"location":0,"echo":false,"script":null)
 ]
 }
+debugAction={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":80,"key_label":0,"unicode":112,"location":0,"echo":false,"script":null)
+]
+}
+sprint={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194325,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+]
+}
 
 [layer_names]
 
@@ -68,6 +79,7 @@ drop_item={
 3d_physics/layer_2="player"
 3d_physics/layer_3="interactions"
 3d_physics/layer_4="Jimothy"
+3d_physics/layer_8="JimsChair"
 
 [physics]
 

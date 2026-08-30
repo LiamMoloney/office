@@ -8,7 +8,7 @@
 [ext_resource type="Shader" uid="uid://cbte7qo1qhoji" path="res://Sky.gdshader" id="4_b4adj"]
 [ext_resource type="PackedScene" uid="uid://d3rr88r4ub7jh" path="res://BuildingParts/static_wall.tscn" id="4_m3clv"]
 [ext_resource type="PackedScene" uid="uid://dsqkh6j3be0ui" path="res://BuildingParts/static_corner.tscn" id="7_4eo0i"]
-[ext_resource type="PackedScene" uid="uid://1uggl3ql0nop" path="res://Desk.tscn" id="7_b4adj"]
+[ext_resource type="PackedScene" uid="uid://1uggl3ql0nop" path="res://BuildingParts/Furniture/Desk.tscn" id="7_b4adj"]
 [ext_resource type="Texture2D" uid="uid://dglo5582comey" path="res://officefloor.png" id="7_mxnmf"]
 [ext_resource type="PackedScene" uid="uid://cwhqmcjgbhwtn" path="res://BuildingParts/ceilinbg.tscn" id="9_3ppgv"]
 [ext_resource type="PackedScene" uid="uid://ekkravx5mvjt" path="res://Interactive/Computer/monitor.tscn" id="9_86ljf"]
@@ -17,7 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://bhu67lcgdbfn5" path="res://Interactive/Printer/printer.tscn" id="13_printer"]
 [ext_resource type="PackedScene" uid="uid://c603swvg5vxya" path="res://Interactive/stanley_zone.tscn" id="14_stanley"]
 [ext_resource type="Texture2D" uid="uid://dxm170xl67tma" path="res://Art/mats/windows_0197_01_s.jpg" id="15_esphl"]
-[ext_resource type="PackedScene" uid="uid://daaenrnue106o" path="res://shift_hud.tscn" id="16_shift_hud"]
+[ext_resource type="PackedScene" uid="uid://daaenrnue106o" path="res://HUD/shift_hud.tscn" id="16_shift_hud"]
 [ext_resource type="PackedScene" uid="uid://b5bvi8e2ad88p" path="res://BuildingParts/desk_clock.tscn" id="17_clock"]
 [ext_resource type="PackedScene" uid="uid://bm7mwsc03jgw5" path="res://Interactive/Stapler/stapler.tscn" id="18_stapler"]
 [ext_resource type="PackedScene" uid="uid://bjw2lbh5umg1f" path="res://StaticPropsScenes/office_pack/gLTF/wireless_mouse.glb" id="19_pd0bf"]
@@ -26,9 +26,10 @@
 [ext_resource type="PackedScene" uid="uid://m4is1heju3a6" path="res://StaticPropsScenes/office_pack/gLTF/pen.glb" id="22_105nu"]
 [ext_resource type="PackedScene" uid="uid://bc77odngfo27a" path="res://BuildingParts/Furniture/Chair.tscn" id="23_s0cgv"]
 [ext_resource type="PackedScene" uid="uid://c01411cflsisc" path="res://StaticPropsScenes/lights.tscn" id="25_wesx8"]
-[ext_resource type="PackedScene" uid="uid://bgd2887rg7hf6" path="res://jimothy.tscn" id="26_qqkhr"]
+[ext_resource type="PackedScene" uid="uid://bgd2887rg7hf6" path="res://Jim/jimothy.tscn" id="26_qqkhr"]
 [ext_resource type="PackedScene" uid="uid://dqkjxu3vyt64j" path="res://StaticPropsScenes/light_controller.tscn" id="27_light_controller"]
 [ext_resource type="Texture2D" uid="uid://umebc55ms3es" path="res://Art/plaster_new_0006_03_tiled_s.jpg" id="29_fmksp"]
+[ext_resource type="PackedScene" uid="uid://cx4jmugjivpmv" path="res://sink.tscn" id="30_vve6c"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4vjci"]
 shader = ExtResource("4_b4adj")
@@ -75,6 +76,7 @@ size = Vector2(100, 100)
 
 [node name="character" parent="." unique_id=795991279 instance=ExtResource("1_m3clv")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -8, 0.3, -7)
+collision_mask = 131
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1206441052]
 environment = SubResource("Environment_86ljf")
@@ -3339,7 +3341,7 @@ transform = Transform3D(-0.5, 0, -1.4901161e-08, 0, 0.5, 0, 1.4901161e-08, 0, -0
 transform = Transform3D(-0.8, 0, -6.9938224e-08, 0, 0.8, 0, 6.9938224e-08, 0, -0.8, -7.2337747, 0.7, -5.8890386)
 
 [node name="PrinterScene" parent="Objects" unique_id=166601002 instance=ExtResource("13_printer")]
-transform = Transform3D(-3.059797e-08, 0, -0.7, 0, 0.7, 0, 0.7, 0, -3.059797e-08, -7.2799997, 0.47000003, -12.85)
+transform = Transform3D(-3.059797e-08, 0, -0.7, 0, 0.7, 0, 0.7, 0, -3.059797e-08, -7.2799997, -0.029999986, -12.85)
 
 [node name="StaplerScene" parent="Objects" unique_id=1951553760 instance=ExtResource("18_stapler")]
 transform = Transform3D(0.55, 0, 0, 0, 0.55, 0, 0, 0, 0.55, -6.6000004, 0.55999994, -5.15)
@@ -3356,11 +3358,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.7, 0.5, -6.82385)
 [node name="pen" parent="Objects" unique_id=1860695403 instance=ExtResource("22_105nu")]
 transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, -7, 0.52603567, -7.5)
 
-[node name="Chair" parent="Objects" unique_id=1995564714 instance=ExtResource("23_s0cgv")]
+[node name="YourChair" parent="Objects" unique_id=1995564714 instance=ExtResource("23_s0cgv")]
 transform = Transform3D(-0.5, 0, -4.371139e-08, 0, 0.5, 0, 4.371139e-08, 0, -0.5, -7.514254, 0.121184945, -6.5)
 
+[node name="YourChair2" parent="Objects" unique_id=470597531 instance=ExtResource("23_s0cgv")]
+transform = Transform3D(0.5843851, 0, 0.1565856, 0, 0.605, 0, -0.1565856, 0, 0.5843851, -4.409461, 0.14279598, -6.4427133)
+collision_layer = 128
+collision_mask = 0
+
 [node name="Jimothy" parent="." unique_id=1442452777 instance=ExtResource("26_qqkhr")]
-transform = Transform3D(-3.059797e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.059797e-08, -1.965939, 0.08521646, -5.9889746)
+transform = Transform3D(-3.059797e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.059797e-08, -4.4659386, 0.2352165, -6.288975)
 
 [node name="BackgroundFloors" type="Node3D" parent="." unique_id=512464346]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.05, 0)
@@ -3400,3 +3407,6 @@ mesh = SubResource("PlaneMesh_ddmlk")
 [node name="Concrete floor6" type="MeshInstance3D" parent="BackgroundFloors" unique_id=2000226117]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 83, -3.3, -99.5)
 mesh = SubResource("PlaneMesh_ddmlk")
+
+[node name="Sink" parent="." unique_id=369623873 instance=ExtResource("30_vve6c")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -17.9, 0.35000002, -4.2)

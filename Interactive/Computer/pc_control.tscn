@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://cxg7j05uxb77j" path="res://Art/Desktop/bg.png" id="1_1rrs0"]
 [ext_resource type="Script" uid="uid://d004sayi1ggk8" path="res://Interactive/Computer/pc_control.gd" id="1_odmnx"]
 [ext_resource type="Texture2D" uid="uid://b52b430blpug0" path="res://Art/cursor.png" id="1_viatp"]
-[ext_resource type="PackedScene" uid="uid://dpbsh565by13w" path="res://icon.tscn" id="4_1povo"]
+[ext_resource type="PackedScene" uid="uid://dpbsh565by13w" path="res://Interactive/Computer/icon.tscn" id="4_1povo"]
 
 [node name="PCControl" type="Control" unique_id=2128943642]
 custom_minimum_size = Vector2(800, 600)

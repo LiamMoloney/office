@@ -349,6 +349,7 @@ func _close_sale() -> bool:
 	closed_successfully = randf() <= success_chance
 	call_state = CallState.RESULT
 	if closed_successfully:
+		GameContext.mark_phone_number_successful(str(current_sale.get("phone_number", "")))
 		_queue_sale_for_print()
 	_update_call_ready_light()
 	return closed_successfully
@@ -397,12 +398,11 @@ func _load_current_prompt() -> void:
 	var prompt_step := prompt_steps[prompt_step_index] as Dictionary
 	prompt_attribute = str(prompt_step.get("attribute", ""))
 	prompt_option_type = str(prompt_step.get("type", "dialogue"))
-	var database = preload("res://email_database.gd").new()
 	if prompt_step_index == 0:
-		prompt_opener = database.get_prompt_opener()
+		prompt_opener = EmailDatabase.get_prompt_opener()
 	else:
 		prompt_opener = ""
-	prompt_options = database.get_dialogue_options(prompt_attribute, prompt_option_type)
+	prompt_options = EmailDatabase.get_dialogue_options(prompt_attribute, prompt_option_type)
 	prompt_options.shuffle()
 
 func _apply_prompt_score(score: int) -> void:

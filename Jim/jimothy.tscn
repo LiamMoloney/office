@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://bgd2887rg7hf6"]
 
-[ext_resource type="Script" uid="uid://ctac1j81lc4ve" path="res://jimothy.gd" id="1_yirxg"]
+[ext_resource type="Script" uid="uid://ctac1j81lc4ve" path="res://Jim/jimothy.gd" id="1_yirxg"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ddmlk"]
 radius = 0.3

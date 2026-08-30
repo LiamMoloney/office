@@ -73,7 +73,9 @@ func _on_interactable_interacted(actor: Node) -> void:
 
 	var player := actor as Player
 	if player.is_holding_pickup_type("stapler"):
-		staple()
+		var held_stapler := player.get_held_item() as Stapler
+		if held_stapler != null and held_stapler.can_staple():
+			staple()
 		return
 
 	_pick_up(player)

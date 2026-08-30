@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://d1ayajbh7s4jc" path="res://Interactive/Stapler/stapler.gd" id="1_stapler"]
 [ext_resource type="PackedScene" uid="uid://dlwtf6nxewpve" path="res://Interactive/interactable.tscn" id="2_interactable"]
 [ext_resource type="Material" uid="uid://deudcngrnrh7q" path="res://Art/MatsMaker/black_plastic.tres" id="2_ucs4y"]
-[ext_resource type="PackedScene" uid="uid://dbpt6dmvlawjj" path="res://sabotagable.tscn" id="3_sabotagable"]
+[ext_resource type="PackedScene" uid="uid://dbpt6dmvlawjj" path="res://Interactive/sabotagable.tscn" id="3_sabotagable"]
 
 [sub_resource type="BoxShape3D" id="StaplerBodyShape"]
 size = Vector3(0.5, 0.15, 0.2)
@@ -28,14 +28,11 @@ size = Vector3(0.8, 0.5, 0.6)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j7vot"]
 transparency = 1
 blend_mode = 1
-depth_draw_mode = 1
+cull_mode = 1
 albedo_color = Color(0.20569223, 0.5401359, 0.30840328, 1)
 metallic = 0.05
 metallic_specular = 0.0
-roughness = 0.0
-rim_enabled = true
-refraction_enabled = true
-refraction_scale = 0.23
+roughness = 0.15
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_ddmlk"]
 material = SubResource("StandardMaterial3D_j7vot")
@@ -72,8 +69,7 @@ shape = SubResource("InteractShape")
 sabotagable_id = "stapler"
 
 [node name="JelloMesh" type="MeshInstance3D" parent="." unique_id=553420608]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2726562, 0)
-visible = false
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.23176266, 0)
 mesh = SubResource("CylinderMesh_ddmlk")
 
 [connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]

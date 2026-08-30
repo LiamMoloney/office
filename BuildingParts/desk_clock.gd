@@ -26,9 +26,9 @@ func _update_time(progress: float) -> void:
 	var day_minutes := roundi(lerpf(WORKDAY_START_MINUTES, WORKDAY_END_MINUTES, clampf(progress, 0.0, 1.0)))
 	var hour_24 := int(day_minutes / 60)
 	var minute := day_minutes % 60
-	var suffix := "   AM"
+	var suffix := ""
 	if hour_24 >= 12:
-		suffix = "   PM"
+		suffix = ""
 
 	var hour_12 := hour_24 % 12
 	if hour_12 == 0:

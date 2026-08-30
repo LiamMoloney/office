@@ -1,5 +1,5 @@
 extends RigidBody3D
-class_name StaplerStatic
+class_name Stapler
 
 @export var held_rotation_offset_degrees := Vector3(0.0, 90.0, 0.0)
 
@@ -49,6 +49,9 @@ func _on_interactable_interacted(actor: Node) -> void:
 
 	var player := actor as Player
 	if player.is_holding_pickup_type("paper"):
+		if !can_staple():
+			return
+
 		var held_paper = player.get_held_item()
 		if held_paper != null and held_paper.has_method("staple"):
 			held_paper.staple()
@@ -95,6 +98,9 @@ func _reparent_to_world() -> void:
 func is_sabotaged() -> bool:
 	return sabotagable.sabotaged
 
+func fix_sabotage() -> void:
+	sabotagable.fix()
+
 func jello() -> void:
 	jello_mesh.visible = true
 
@@ -106,6 +112,9 @@ func _on_sabotagable_sabotage_changed(is_sabotaged: bool) -> void:
 		jello()
 	else:
 		unjello()
+
+func can_staple() -> bool:
+	return !is_sabotaged()
 
 func _sync_sabotaged_state() -> void:
 	if sabotagable.sabotaged:

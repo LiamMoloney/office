@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dbpt6dmvlawjj"]
 
-[ext_resource type="Script" uid="uid://ulmcteg8fdir" path="res://Sabotagable.gd" id="1_mnt44"]
+[ext_resource type="Script" uid="uid://ulmcteg8fdir" path="res://Interactive/Sabotagable.gd" id="1_mnt44"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ddmlk"]
 size = Vector3(1, 1.5, 1)

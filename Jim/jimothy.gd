@@ -1,9 +1,12 @@
 extends CharacterBody3D
 
-@export var move_speed := 1
+@export var move_speed := 0.0
 
 var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 var move_direction := Vector3.ZERO
+
+var facing_player = false
+var following_player = false
 
 var player: Node3D
 var sabotagable_items: Array[Sabotagable] = []
@@ -12,10 +15,10 @@ func _ready() -> void:
 	add_to_group("jim")
 	randomize()
 	player = _get_player()
-	$AnimationPlayer.play("Walk")
+	$AnimationPlayer.play("SitAndLaugh")
 
 func _process(_delta: float) -> void:
-	_sabotage_available_stapler()
+	_sabotage_by_id("stapler", 0)
 
 func _physics_process(delta: float) -> void:
 	if player == null or !is_instance_valid(player):
@@ -23,18 +26,22 @@ func _physics_process(delta: float) -> void:
 
 	if !is_on_floor():
 		velocity.y -= gravity * delta
-
-	if player != null:
-		var direction := player.global_position - global_position
+	var target : Node3D = player
+	
+	if player != null and following_player:
+		var direction := target.global_position - global_position
 		direction.y = 0
 		direction = direction.normalized()
-
 		velocity.x = direction.x * move_speed
 		velocity.z = direction.z * move_speed
-		_stare_at_player()
 	else:
 		velocity.x = 0
 		velocity.z = 0
+
+	if player != null and facing_player:
+		_stare_at_player()
+		
+	
 
 	move_and_slide()
 
@@ -58,11 +65,11 @@ func register_sabotagable(item: Sabotagable) -> void:
 func unregister_sabotagable(item: Sabotagable) -> void:
 	sabotagable_items.erase(item)
 
-func _sabotage_available_stapler() -> void:
+func _sabotage_by_id(item_id : String, level : int) -> void:
 	for item in sabotagable_items:
 		if item == null or !is_instance_valid(item):
 			continue
 
-		if item.sabotagable_id == "stapler":
+		if item.sabotagable_id == item_id:
 			item.sabotage()
 			return

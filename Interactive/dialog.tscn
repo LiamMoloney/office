@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://d3wr0euj8d6sj"]
 
-[ext_resource type="Script" uid="uid://bmq6dysusg26l" path="res://dialog.gd" id="1_dialog"]
+[ext_resource type="Script" uid="uid://bmq6dysusg26l" path="res://Interactive/dialog.gd" id="1_dialog"]
 [ext_resource type="FontFile" uid="uid://bfpqn2fgpgb6q" path="res://Art/Fonts/itc-american-typewriter-medium/ITC American Typewriter Medium/ITC American Typewriter Medium.otf" id="2_font"]
 
 [sub_resource type="Gradient" id="Gradient_dialog_backing"]

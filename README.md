@@ -21,7 +21,7 @@ Important values:
 
 ```gdscript
 daily_emails
-called_phone_numbers
+successful_phone_numbers
 reported_phone_numbers
 ```
 
@@ -30,7 +30,8 @@ Important methods:
 - `get_daily_emails()`: lazily generates the day's inbox
 - `delete_daily_email(email)`: removes a lead
 - `report_daily_email(email)`: removes and blocks a lead
-- `take_lead_by_phone_number(phone_number)`: removes and returns a real lead when the phone dials it
+- `take_lead_by_phone_number(phone_number)`: returns a real callable lead without removing it from the inbox
+- `mark_phone_number_successful(phone_number)`: blocks a number after it has produced a sale
 
 ### `Globals/game_manager.gd`
 
@@ -50,7 +51,7 @@ Use `GameManager.add_money(amount)` to pay the player. It updates both round and
 
 ## Email Leads
 
-### `email_database.gd`
+### `Globals/email_database.gd`
 
 This file owns lead content:
 
@@ -91,7 +92,7 @@ The three dialogue lines map to `DIALOGUE_SCORES = [-1, 0, 2]`.
 
 The email app shows the current generated lead.
 
-The email app listens to `GameContext.emails_changed` and rebuilds its inbox when a lead is called, deleted, or reported.
+The email app listens to `GameContext.emails_changed` and rebuilds its inbox when a lead is manually deleted or reported.
 
 ## Phone Flow
 
@@ -101,7 +102,7 @@ The phone owns the live call.
 
 When a valid number is dialed:
 
-- `GameContext.take_lead_by_phone_number()` removes and returns the lead
+- `GameContext.take_lead_by_phone_number()` returns the lead without removing its email
 - the client's greeting appears at the top
 - the first-impression bar appears
 - all other phone labels/buttons are hidden until the timing minigame completes
@@ -110,7 +111,7 @@ The first-impression button is fixed. A small white indicator moves across the b
 
 After that, the prompt minigame shows a random client opener and shuffled player dialogue options generated from the email attributes. The selected line modifies `success_chance`, then the player can close the sale.
 
-On sale success, `phone.gd` emits `sale_queued(sale)`. Hanging up clears the phone's current call/result without touching printer queue, printed paper, stapled paper, or Stanley state.
+On sale success, `phone.gd` marks the lead's phone number successful and emits `sale_queued(sale)`. Hanging up clears the phone's current call/result without touching printer queue, printed paper, stapled paper, or Stanley state.
 
 ## Report Turn-In Flow
 
@@ -212,7 +213,7 @@ Change close-sale odds:
 
 Change payouts:
 
-- edit the `payout` value generated in `email_database.gd`
+- edit the `payout` value generated in `Globals/email_database.gd`
 
 Add more physical steps:
 

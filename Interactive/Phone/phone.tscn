@@ -4,9 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://bvajqkfirnvuu" path="res://Art/mats/Texturelabs_Fabric_189S.jpg" id="2_1pg07"]
 [ext_resource type="PackedScene" uid="uid://dlwtf6nxewpve" path="res://Interactive/interactable.tscn" id="2_c02x5"]
 [ext_resource type="FontFile" uid="uid://bfpqn2fgpgb6q" path="res://Art/Fonts/itc-american-typewriter-medium/ITC American Typewriter Medium/ITC American Typewriter Medium.otf" id="3_font"]
-[ext_resource type="PackedScene" uid="uid://d3wr0euj8d6sj" path="res://dialog.tscn" id="4_dialog"]
+[ext_resource type="PackedScene" uid="uid://d3wr0euj8d6sj" path="res://Interactive/dialog.tscn" id="4_dialog"]
 [ext_resource type="FontFile" uid="uid://bbnykwaomph22" path="res://Art/Fonts/ds_digital/DS-DIGIB.TTF" id="5_digital"]
-[ext_resource type="PackedScene" uid="uid://dbpt6dmvlawjj" path="res://sabotagable.tscn" id="6_sabotagable"]
+[ext_resource type="PackedScene" uid="uid://dbpt6dmvlawjj" path="res://Interactive/sabotagable.tscn" id="6_sabotagable"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_ddmlk"]
 top_radius = 0.55
