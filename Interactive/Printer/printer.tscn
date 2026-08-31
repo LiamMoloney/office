@@ -5,10 +5,10 @@
 [ext_resource type="PackedScene" uid="uid://c657xweyfkn8" path="res://StaticPropsScenes/office_pack/gLTF/printer_big.glb" id="3_8dg4q"]
 
 [sub_resource type="BoxShape3D" id="InteractShape"]
-size = Vector3(0.2, 0.2, 0.3)
+size = Vector3(0.2, 0.15, 0.25)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ddmlk"]
-size = Vector3(1.0500001, 1.0500001, 1.0500001)
+size = Vector3(1.0500001, 1.1, 1.0500001)
 
 [sub_resource type="BoxMesh" id="PaperMesh"]
 size = Vector3(0.46, 0.03, 0.28)
@@ -19,23 +19,33 @@ albedo_color = Color(0.9, 0.9, 0.84, 1)
 [sub_resource type="QuadMesh" id="QuadMesh_j7vot"]
 size = Vector2(0.16, 0.11)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gdpo5"]
+albedo_color = Color(0.0142752165, 0.014275218, 0.014275218, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_j7vot"]
+material = SubResource("StandardMaterial3D_gdpo5")
+size = Vector3(0.75, 0.02080078, 0.75)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_j7vot"]
+size = Vector3(0.75, 0.05, 0.25)
+
 [node name="PrinterScene" type="StaticBody3D" unique_id=1514152638 groups=["office_printer"]]
 script = ExtResource("1_printer")
 
 [node name="Interactable" parent="." unique_id=1867132925 instance=ExtResource("2_interactable")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Interactable" unique_id=617255630]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6363281, 0.99645984, -0.4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6363281, 0.97145987, -0.375)
 shape = SubResource("InteractShape")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1348550081]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.024999976, 0.4789062, -0.0012696236)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.024999976, 0.5039062, -0.0012696236)
 shape = SubResource("BoxShape3D_ddmlk")
 
 [node name="printer_big" parent="." unique_id=2080833360 instance=ExtResource("3_8dg4q")]
 
 [node name="Paper" type="MeshInstance3D" parent="printer_big" unique_id=920299146]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 1.082113, -0.38698587)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 1.0985943, -0.4869859)
 visible = false
 mesh = SubResource("PaperMesh")
 surface_material_override/0 = SubResource("PaperMat")
@@ -44,10 +54,19 @@ surface_material_override/0 = SubResource("PaperMat")
 transform = Transform3D(-2.0430543e-08, -0.7280394, 0.68553525, -2.1697264e-08, 0.68553525, 0.7280394, -1, 0, -2.9802322e-08, 0.63481224, 0.99152017, -0.36320618)
 mesh = SubResource("QuadMesh_j7vot")
 
+[node name="TrayMesh" type="MeshInstance3D" parent="printer_big" unique_id=521062715]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07499999, 1.0241699, -0.425)
+mesh = SubResource("BoxMesh_j7vot")
+
 [node name="PaperOnQueueLight" type="OmniLight3D" parent="." unique_id=1980484668]
 transform = Transform3D(-1.847323e-08, -0.42261827, 0.9063078, 3.9615973e-08, 0.9063078, 0.42261827, -1, 4.371139e-08, 0, 0.6624242, 1.0383834, -0.38000003)
-light_color = Color(0, 1, 0, 1)
-light_energy = 0.1
-light_indirect_energy = 0.1
+light_color = Color(0, 0.73001605, 9.62615e-07, 1)
+light_energy = 0.05
+light_indirect_energy = 0.05
+light_volumetric_fog_energy = 0.095
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=350733229]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07499999, 1.025, -0.6750001)
+shape = SubResource("BoxShape3D_j7vot")
 
 [connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]

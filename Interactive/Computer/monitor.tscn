@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cq4kjpy18ft84" path="res://StaticPropsScenes/office_pack/gLTF/monitor.glb" id="5_jaxwi"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ddmlk"]
-size = Vector3(0.05, 0.6, 0.8)
+size = Vector3(0.2, 0.6, 0.8)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_fa1fk"]
 viewport_path = NodePath("SubViewport")
@@ -32,7 +32,7 @@ albedo_texture = ExtResource("3_6y5p7")
 size = Vector3(0.36535645, 0.23728943, 0.5227585)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_j7vot"]
-size = Vector3(0.3, 0.75, 0.8)
+size = Vector3(0.15, 0.75, 0.8)
 
 [node name="PCScene" type="StaticBody3D" unique_id=1273220450]
 script = ExtResource("1_fa1fk")
@@ -40,7 +40,7 @@ script = ExtResource("1_fa1fk")
 [node name="Interactable" parent="." unique_id=348607495 instance=ExtResource("1_qh22o")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Interactable" unique_id=759309528]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.006962776, 3.7252903e-08, -2.9802322e-08)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.018037226, 3.7252903e-08, -2.9802322e-08)
 shape = SubResource("BoxShape3D_ddmlk")
 
 [node name="ScreenMesh" type="MeshInstance3D" parent="." unique_id=1894886138]
@@ -71,7 +71,7 @@ size = Vector2i(800, 600)
 transform = Transform3D(-2.9802322e-08, 0, 1, 0, 1, 0, -1, 0, -2.9802322e-08, 0.55609965, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=182668613]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.19999999, -0.07499999, 2.9802322e-08)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.07499999, 0.025000013, 2.9802322e-08)
 shape = SubResource("BoxShape3D_j7vot")
 
 [node name="monitor" parent="." unique_id=1271078774 instance=ExtResource("5_jaxwi")]

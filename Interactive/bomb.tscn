@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://deoqytvth20nj"]
+
+[node name="Bomb" type="RigidBody3D" unique_id=1343286745]

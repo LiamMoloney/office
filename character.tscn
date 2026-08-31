@@ -10,6 +10,7 @@
 height = 1.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_glpr6"]
+radius = 0.1
 
 [node name="character" type="CharacterBody3D" unique_id=1717037615]
 collision_layer = 2
@@ -36,9 +37,8 @@ visible = false
 mesh = SubResource("CylinderMesh_ddmlk")
 
 [node name="ShapeCast3D" type="ShapeCast3D" parent="Camera3D" unique_id=224686017]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 shape = SubResource("SphereShape3D_glpr6")
-target_position = Vector3(0, 0, -10)
-collision_mask = 4
+target_position = Vector3(0, 0, -2.5)
+collision_mask = 5
 collide_with_areas = true
 collide_with_bodies = false

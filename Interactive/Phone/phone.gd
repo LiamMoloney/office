@@ -63,6 +63,8 @@ var prompt_step_index := 0
 var prompt_score := 0
 var closed_successfully := false
 var sale_queued_for_print := false
+var failure_response_override := ""
+var jim_sabotage_line := ""
 var sale_finishers := [
 	"You've got yourself a deal.",
 	"Sounds good. Have a nice day.",
@@ -85,6 +87,20 @@ var lost_client_responses := [
 	"I don't think we can move forward today.",
 	"No thanks. Have a good one."
 ]
+var scared_client_responses := [
+	"the line died",
+	"HUH?",
+	"Dont contact me again creep"
+]
+
+var jim_sabotage_quotes := [
+	"I HATE YOU! I HATE YOU! I HATE YOU!",
+	"Please man PLEEEEASE I NEED THIS SALE!",
+	"look to your left, right, and behind but don’t look up",
+	"You should go paperless.",
+	"Ok stop interrupting me please Im trying to do a sales call",
+	"THEY WON'T STOP TALKING THEY WON'T STOP TALKING THEY WON'T STOP TALKING",
+]
 
 func _ready() -> void:
 	call_ready_light.visible = false
@@ -97,6 +113,7 @@ func _ready() -> void:
 	hang_up_button.pressed.connect(_on_hang_up_pressed)
 	impression_button.pressed.connect(_on_impression_button_pressed)
 	dialog_box.option_selected.connect(_on_dialog_option_selected)
+	sabotagable.sabotage_changed.connect(_on_sabotagable_sabotage_changed)
 	impression_button.disabled = true
 	for i in range(dial_buttons.size()):
 		dial_buttons[i].pressed.connect(_on_dial_button_pressed.bind(i + 1))
@@ -171,6 +188,8 @@ func _clear_call() -> void:
 	prompt_score = 0
 	closed_successfully = false
 	sale_queued_for_print = false
+	failure_response_override = ""
+	jim_sabotage_line = ""
 	call_state = CallState.IDLE
 	_reset_phone_entry()
 	_update_call_ready_light()
@@ -250,6 +269,10 @@ func _show_closed_sale() -> void:
 	impression_bar.visible = false
 	if closed_successfully:
 		dialog_box.show_dialog(last_player_line, _get_sale_finisher(), "Phone")
+	elif jim_sabotage_line != "":
+		dialog_box.show_jim_dialog(jim_sabotage_line, failure_response_override, "Phone")
+	elif failure_response_override != "":
+		dialog_box.show_dialog(last_player_line, failure_response_override, "Phone")
 	else:
 		dialog_box.show_dialog(last_player_line, _get_lost_client_response(), "Phone")
 	dialog_box.show_sale_result(closed_successfully)
@@ -258,10 +281,18 @@ func _show_closed_sale() -> void:
 
 func _on_impression_button_pressed() -> void:
 	_set_first_impression_quality(_get_impression_quality())
+	if _try_fail_sale_from_jim_sabotage():
+		_show_current_call_phase()
+		return
+
 	_show_current_call_phase()
 
 func _on_dialog_option_selected(option_index: int) -> void:
 	if call_state == CallState.READY_TO_CLOSE:
+		if _try_fail_sale_from_jim_sabotage():
+			_show_current_call_phase()
+			return
+
 		last_player_line = "Close Sale"
 		dialog_box.show_my_dialog(last_player_line)
 		_close_sale()
@@ -272,6 +303,10 @@ func _on_dialog_option_selected(option_index: int) -> void:
 		return
 
 	if option_index < 0 or option_index >= prompt_options.size():
+		return
+
+	if _try_fail_sale_from_jim_sabotage():
+		_show_current_call_phase()
 		return
 
 	last_player_line = prompt_options[option_index]["text"]
@@ -313,6 +348,8 @@ func _start_call(sale: Dictionary) -> void:
 	prompt_score = 0
 	closed_successfully = false
 	sale_queued_for_print = false
+	failure_response_override = ""
+	jim_sabotage_line = ""
 	call_state = CallState.FIRST_IMPRESSION
 	_update_call_ready_light()
 
@@ -346,6 +383,10 @@ func _choose_prompt_option(option_index: int) -> void:
 	_update_call_ready_light()
 
 func _close_sale() -> bool:
+	if _try_fail_sale_from_jim_sabotage():
+		_update_call_ready_light()
+		return false
+
 	closed_successfully = randf() <= success_chance
 	call_state = CallState.RESULT
 	if closed_successfully:
@@ -465,6 +506,39 @@ func _get_sale_finisher() -> String:
 
 func _get_lost_client_response() -> String:
 	return lost_client_responses.pick_random()
+
+func _get_scared_client_response() -> String:
+	return scared_client_responses.pick_random()
+
+func _get_jim_sabotage_quote() -> String:
+	return jim_sabotage_quotes.pick_random()
+
+func _try_fail_sale_from_jim_sabotage() -> bool:
+	if !sabotagable.sabotaged:
+		return false
+
+	return _fail_sale_from_jim_sabotage()
+
+func _fail_sale_from_jim_sabotage() -> bool:
+	if !is_using or current_sale.is_empty():
+		return false
+
+	if call_state == CallState.IDLE or call_state == CallState.FIRST_IMPRESSION or call_state == CallState.RESULT:
+		return false
+
+	closed_successfully = false
+	jim_sabotage_line = _get_jim_sabotage_quote()
+	failure_response_override = _get_scared_client_response()
+	call_state = CallState.RESULT
+	_update_call_ready_light()
+	return true
+
+func _on_sabotagable_sabotage_changed(is_sabotaged: bool) -> void:
+	if !is_sabotaged:
+		return
+
+	if _fail_sale_from_jim_sabotage():
+		_show_current_call_phase()
 
 func _get_impression_quality() -> float:
 	if impression_indicator == null or impression_track == null:

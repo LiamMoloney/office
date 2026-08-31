@@ -66,7 +66,7 @@ func _spawn_sale_paper(sale: Dictionary) -> void:
 	get_tree().current_scene.add_child(printed_paper)
 	printed_paper.global_transform = _get_paper_spawn_transform()
 	printed_paper.setup(sale)
-	printed_paper.freeze = true
+	printed_paper.launch()
 
 func _has_output_paper_waiting() -> bool:
 	return printed_paper != null and is_instance_valid(printed_paper) and !printed_paper.is_held

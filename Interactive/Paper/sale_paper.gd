@@ -2,6 +2,11 @@ extends RigidBody3D
 class_name SalePaper
 
 @export var held_rotation_offset_degrees := Vector3( 30, -70, 0)
+@export var launch_local_direction := Vector3.FORWARD
+@export_range(0.0, 10.0, 0.05) var launch_impulse := 0.5
+@export_range(-10.0, 10.0, 0.05) var launch_upward_impulse := 0.0
+@export_range(0.0, 5.0, 0.1) var launch_gravity_scale := 1.0
+@export var launch_torque_impulse := Vector3.ZERO
 
 @onready var interactable: Interactable = $Interactable
 @onready var company_label: Label3D = $CompanyLabel
@@ -42,6 +47,28 @@ func is_ready_for_stanley() -> bool:
 
 func get_payout() -> int:
 	return payout
+
+func launch() -> void:
+	holder = null
+	is_held = false
+	gravity_scale = launch_gravity_scale
+	linear_velocity = Vector3.ZERO
+	angular_velocity = Vector3.ZERO
+	collision_layer = body_collision_layer
+	collision_mask = body_collision_mask
+	interactable.is_interactable = true
+	interactable.collision_layer = interactable_collision_layer
+
+	var launch_direction := launch_local_direction
+	if launch_direction.length_squared() <= 0.001:
+		launch_direction = Vector3.FORWARD
+
+	var start_transform := global_transform
+	var world_impulse := (start_transform.basis * launch_direction.normalized()).normalized() * launch_impulse
+	world_impulse += Vector3.UP * launch_upward_impulse
+	apply_central_impulse(world_impulse)
+	if launch_torque_impulse.length_squared() > 0.0:
+		apply_torque_impulse(start_transform.basis * launch_torque_impulse)
 
 func turn_in() -> void:
 	if holder:

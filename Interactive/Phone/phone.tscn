@@ -8,40 +8,6 @@
 [ext_resource type="FontFile" uid="uid://bbnykwaomph22" path="res://Art/Fonts/ds_digital/DS-DIGIB.TTF" id="5_digital"]
 [ext_resource type="PackedScene" uid="uid://dbpt6dmvlawjj" path="res://Interactive/sabotagable.tscn" id="6_sabotagable"]
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_ddmlk"]
-top_radius = 0.55
-bottom_radius = 0.55
-height = 0.125
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gdpo5"]
-albedo_texture = ExtResource("2_1pg07")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c02x5"]
-albedo_color = Color(0.48178947, 0.48178947, 0.48178947, 1)
-albedo_texture = ExtResource("2_1pg07")
-
-[sub_resource type="TorusMesh" id="TorusMesh_3olcy"]
-lightmap_size_hint = Vector2i(33, 9)
-material = SubResource("StandardMaterial3D_c02x5")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1pg07"]
-albedo_texture = ExtResource("2_1pg07")
-
-[sub_resource type="BoxMesh" id="BoxMesh_j7vot"]
-material = SubResource("StandardMaterial3D_1pg07")
-size = Vector3(2.65, 0.5, 3.5)
-
-[sub_resource type="BoxMesh" id="BoxMesh_3olcy"]
-material = SubResource("StandardMaterial3D_1pg07")
-size = Vector3(0.5, 0.1, 0.5)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5ox5x"]
-albedo_texture = ExtResource("2_1pg07")
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_o4j0v"]
-material = SubResource("StandardMaterial3D_5ox5x")
-height = 0.5
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_ddmlk"]
 size = Vector3(0.35, 0.2, 0.3)
 
@@ -88,34 +54,42 @@ corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 
+[sub_resource type="CylinderMesh" id="CylinderMesh_ddmlk"]
+top_radius = 0.55
+bottom_radius = 0.55
+height = 0.125
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gdpo5"]
+albedo_texture = ExtResource("2_1pg07")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c02x5"]
+albedo_color = Color(0.48178947, 0.48178947, 0.48178947, 1)
+albedo_texture = ExtResource("2_1pg07")
+
+[sub_resource type="TorusMesh" id="TorusMesh_3olcy"]
+lightmap_size_hint = Vector2i(33, 9)
+material = SubResource("StandardMaterial3D_c02x5")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1pg07"]
+albedo_texture = ExtResource("2_1pg07")
+
+[sub_resource type="BoxMesh" id="BoxMesh_j7vot"]
+material = SubResource("StandardMaterial3D_1pg07")
+size = Vector3(2.65, 0.5, 3.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_3olcy"]
+material = SubResource("StandardMaterial3D_1pg07")
+size = Vector3(0.5, 0.1, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5ox5x"]
+albedo_texture = ExtResource("2_1pg07")
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_o4j0v"]
+material = SubResource("StandardMaterial3D_5ox5x")
+height = 0.5
+
 [node name="PhoneScene" type="StaticBody3D" unique_id=1273220450 groups=["office_phone"]]
 script = ExtResource("1_3olcy")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1071955138]
-transform = Transform3D(0.10080001, 0, 0, 0, 0.24000001, 0, 0, 0, 0.096, -0.27649993, -0.19775, -0.06666668)
-mesh = SubResource("CylinderMesh_ddmlk")
-surface_material_override/0 = SubResource("StandardMaterial3D_gdpo5")
-
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="." unique_id=18732185]
-transform = Transform3D(-2.517776e-09, -7.553328e-09, 0.120000005, -0.05760001, -7.553328e-09, -5.2453664e-09, 2.5177767e-09, -0.17279999, -5.245367e-09, -0.37747565, -0.19775003, -0.06666668)
-mesh = SubResource("TorusMesh_3olcy")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=446547867]
-transform = Transform3D(0.10080001, 0, 0, 0, 0.24000001, 0, 0, 0, 0.096, -0.46649992, -0.19775, -0.06666668)
-mesh = SubResource("CylinderMesh_ddmlk")
-surface_material_override/0 = SubResource("StandardMaterial3D_gdpo5")
-
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="." unique_id=1871216577]
-transform = Transform3D(0.14400002, 0, 0, 0, 0.24000001, 0, 0, 0, 0.096, -0.3712997, -0.25775, -0.13866669)
-mesh = SubResource("BoxMesh_j7vot")
-
-[node name="MeshInstance3D5" type="MeshInstance3D" parent="." unique_id=612630901]
-transform = Transform3D(0.14400002, 0, 0, 0, 0.24000001, 0, 0, 0, 0.096, -0.43249956, -0.1857499, -0.2506667)
-mesh = SubResource("BoxMesh_3olcy")
-
-[node name="MeshInstance3D6" type="MeshInstance3D" parent="." unique_id=1747579450]
-transform = Transform3D(0.14400002, 0, 0, 0, 0.24000001, 0, 0, 0, 0.13440005, -0.31249937, -0.24574988, -0.2106667)
-mesh = SubResource("CylinderMesh_o4j0v")
 
 [node name="Interactable" parent="." unique_id=348607495 instance=ExtResource("2_c02x5")]
 
@@ -123,7 +97,7 @@ mesh = SubResource("CylinderMesh_o4j0v")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3569628, -0.24999999, -0.15)
 shape = SubResource("BoxShape3D_ddmlk")
 
-[node name="Sabotagable" parent="." instance=ExtResource("6_sabotagable")]
+[node name="Sabotagable" parent="." unique_id=1287613813 instance=ExtResource("6_sabotagable")]
 sabotagable_id = "phone"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1479206572]
@@ -395,5 +369,33 @@ theme_override_styles/normal = SubResource("StyleBoxDialNormal")
 theme_override_styles/pressed = SubResource("StyleBoxDialPressed")
 theme_override_styles/hover = SubResource("StyleBoxDialHover")
 text = "Hang Up"
+
+[node name="ShittyMeshes" type="Node3D" parent="." unique_id=1449747958]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ShittyMeshes" unique_id=1071955138]
+transform = Transform3D(0.10080001, 0, 0, 0, 0.24000001, 0, 0, 0, 0.096, -0.27649993, -0.19775, -0.06666668)
+mesh = SubResource("CylinderMesh_ddmlk")
+surface_material_override/0 = SubResource("StandardMaterial3D_gdpo5")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="ShittyMeshes" unique_id=18732185]
+transform = Transform3D(-2.517776e-09, -7.553328e-09, 0.120000005, -0.05760001, -7.553328e-09, -5.2453664e-09, 2.5177767e-09, -0.17279999, -5.245367e-09, -0.37747565, -0.19775003, -0.06666668)
+mesh = SubResource("TorusMesh_3olcy")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="ShittyMeshes" unique_id=446547867]
+transform = Transform3D(0.10080001, 0, 0, 0, 0.24000001, 0, 0, 0, 0.096, -0.46649992, -0.19775, -0.06666668)
+mesh = SubResource("CylinderMesh_ddmlk")
+surface_material_override/0 = SubResource("StandardMaterial3D_gdpo5")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="ShittyMeshes" unique_id=1871216577]
+transform = Transform3D(0.14400002, 0, 0, 0, 0.24000001, 0, 0, 0, 0.096, -0.3712997, -0.25775, -0.13866669)
+mesh = SubResource("BoxMesh_j7vot")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="ShittyMeshes" unique_id=612630901]
+transform = Transform3D(0.14400002, 0, 0, 0, 0.24000001, 0, 0, 0, 0.096, -0.43249956, -0.1857499, -0.2506667)
+mesh = SubResource("BoxMesh_3olcy")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="ShittyMeshes" unique_id=1747579450]
+transform = Transform3D(0.14400002, 0, 0, 0, 0.24000001, 0, 0, 0, 0.13440005, -0.31249937, -0.24574988, -0.2106667)
+mesh = SubResource("CylinderMesh_o4j0v")
 
 [connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]

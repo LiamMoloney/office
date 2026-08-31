@@ -3,6 +3,7 @@ extends Control
 signal option_selected(option_index: int)
 
 @export var letter_delay := 0.05
+@export var jim_dialog_color := Color(1.0, 0.05, 0.03, 1.0)
 
 @onready var header_label: Label = $LowerThird/HeaderLabel
 @onready var sale_made_label: Label = $LowerThird/ResultLabel
@@ -16,8 +17,10 @@ signal option_selected(option_index: int)
 ]
 
 var _typing_elapsed_by_label := {}
+var _default_my_dialog_color := Color.WHITE
 
 func _ready() -> void:
+	_default_my_dialog_color = my_dialog_label.get_theme_color("font_color")
 	for i in range(option_buttons.size()):
 		option_buttons[i].pressed.connect(_on_option_pressed.bind(i))
 	clear_options()
@@ -39,7 +42,19 @@ func show_dialog(my_text: String, target_text: String, header_text := "") -> voi
 	show_my_dialog(my_text)
 	show_target_dialog(target_text)
 
+func show_jim_dialog(my_text: String, target_text: String, header_text := "") -> void:
+	if header_text != "":
+		set_header_text(header_text)
+	show_my_dialog_as_jim(my_text)
+	show_target_dialog(target_text)
+
 func show_my_dialog(text: String) -> void:
+	_set_my_dialog_color(_default_my_dialog_color)
+	my_dialog_label.text = text
+	_show_instantly(my_dialog_label)
+
+func show_my_dialog_as_jim(text: String) -> void:
+	_set_my_dialog_color(jim_dialog_color)
 	my_dialog_label.text = text
 	_show_instantly(my_dialog_label)
 
@@ -83,6 +98,9 @@ func _begin_typewriter(label: Label) -> void:
 func _show_instantly(label: Label) -> void:
 	_typing_elapsed_by_label.erase(label)
 	label.visible_characters = -1
+
+func _set_my_dialog_color(color: Color) -> void:
+	my_dialog_label.add_theme_color_override("font_color", color)
 
 func _on_option_pressed(option_index: int) -> void:
 	option_selected.emit(option_index)

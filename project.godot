@@ -19,6 +19,7 @@ config/features=PackedStringArray("4.7", "Forward Plus")
 GameManager="*uid://imju0ghg4lv1"
 GameContext="*res://Globals/game_context.gd"
 EmailDatabase="*uid://4cxhvrp7783y"
+ShiftHud="*uid://daaenrnue106o"
 
 [display]
 

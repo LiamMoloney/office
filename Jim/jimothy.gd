@@ -1,12 +1,12 @@
 extends CharacterBody3D
 
-@export var move_speed := 0.0
+@export var move_speed := 1
 
 var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 var move_direction := Vector3.ZERO
 
-var facing_player = false
-var following_player = false
+var facing_player = true
+var following_player = true
 
 var player: Node3D
 var sabotagable_items: Array[Sabotagable] = []
@@ -15,10 +15,11 @@ func _ready() -> void:
 	add_to_group("jim")
 	randomize()
 	player = _get_player()
-	$AnimationPlayer.play("SitAndLaugh")
+	$AnimationPlayer.play("Walk")
 
 func _process(_delta: float) -> void:
 	_sabotage_by_id("stapler", 0)
+	_sabotage_by_id("phone", 0)
 
 func _physics_process(delta: float) -> void:
 	if player == null or !is_instance_valid(player):

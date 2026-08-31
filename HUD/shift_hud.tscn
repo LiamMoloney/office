@@ -95,6 +95,67 @@ _data = {
 &"Textflash": SubResource("Animation_w5qdt")
 }
 
+[sub_resource type="Animation" id="Animation_ar0d1"]
+resource_name = "Hint"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HintScale:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.033333335, 0.33333334, 3.6666667, 3.8333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.04, 0.04), Vector2(1, 1), Vector2(1, 1), Vector2(0.025, 0.025)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HintScale:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0333333, 3.8666666),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_i2ooy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HintScale:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.215, 0.215)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HintScale:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8to6m"]
+_data = {
+&"Hint": SubResource("Animation_ar0d1"),
+&"RESET": SubResource("Animation_i2ooy")
+}
+
 [node name="ShiftHUD" type="CanvasLayer" unique_id=1023331863]
 script = ExtResource("1_xsfhi")
 
@@ -110,7 +171,7 @@ text = "$0"
 
 [node name="HealthBar" parent="." unique_id=1186889196 instance=ExtResource("4_ar0d1")]
 
-[node name="StaminaBar" parent="." instance=ExtResource("4_ar0d1")]
+[node name="StaminaBar" parent="." unique_id=1854109367 instance=ExtResource("4_ar0d1")]
 offset_top = 86.0
 offset_bottom = 112.0
 tracked_value = "stamina"
@@ -121,3 +182,46 @@ fill_change_speed = 2.0
 
 [node name="GainPlayer" type="AnimationPlayer" parent="." unique_id=1625377825]
 libraries/ = SubResource("AnimationLibrary_cfkxa")
+
+[node name="HintPlayer" type="AnimationPlayer" parent="." unique_id=479554700]
+libraries/ = SubResource("AnimationLibrary_8to6m")
+
+[node name="HintScale" type="Control" parent="." unique_id=1999668850]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.215, 0.215)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+
+[node name="Hint" type="Label" parent="HintScale" unique_id=1298389784]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -42.0
+offset_top = -7.0
+offset_right = 42.0
+offset_bottom = 7.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("3_i2ooy")
+theme_override_font_sizes/font_size = 36
+text = "Example Hint"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="gui_input" from="HintScale" to="." method="_on_hint_scale_gui_input"]
