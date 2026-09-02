@@ -5,6 +5,8 @@ extends CharacterBody3D
 var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 var move_direction := Vector3.ZERO
 
+@onready var nav_agent: NavigationAgent3D = $NavigationAgent3D
+
 var facing_player = true
 var following_player = true
 
@@ -16,10 +18,12 @@ func _ready() -> void:
 	randomize()
 	player = _get_player()
 	$AnimationPlayer.play("Walk")
-
+	
+	
 func _process(_delta: float) -> void:
 	_sabotage_by_id("stapler", 0)
 	_sabotage_by_id("phone", 0)
+	nav_agent.set_target_position(player.position)
 
 func _physics_process(delta: float) -> void:
 	if player == null or !is_instance_valid(player):
@@ -27,18 +31,12 @@ func _physics_process(delta: float) -> void:
 
 	if !is_on_floor():
 		velocity.y -= gravity * delta
-	var target : Node3D = player
+	var dest = nav_agent.get_next_path_position()
+	var local_dest = dest - global_position
+	var direction = local_dest.normalized()
 	
-	if player != null and following_player:
-		var direction := target.global_position - global_position
-		direction.y = 0
-		direction = direction.normalized()
-		velocity.x = direction.x * move_speed
-		velocity.z = direction.z * move_speed
-	else:
-		velocity.x = 0
-		velocity.z = 0
-
+	velocity = direction * move_speed
+	
 	if player != null and facing_player:
 		_stare_at_player()
 		

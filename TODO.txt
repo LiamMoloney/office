@@ -1,4 +1,7 @@
+
 Then make Sabotages
+Thinking jim navigation might be next...
+
 	Need to add a level pass and a jim aggression level. That gives multiple ways for him to sabotage
 
 	And traps, things not reliant on the normal sale process, just damage you.

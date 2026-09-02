@@ -23,10 +23,19 @@ size = Vector3(0.62, 0.16, 0.02)
 material = SubResource("ClockFaceMat")
 
 [node name="TimeLabel" type="Label3D" parent="." unique_id=1243176658]
-transform = Transform3D(-0.8, 0, -6.9938224e-08, 0, 0.8, 0, 6.9938224e-08, 0, -0.8, 0.015000001, -0.02357202, -0.12550192)
+transform = Transform3D(-0.8, 0, -6.9938224e-08, 0, 0.8, 0, 6.9938224e-08, 0, -0.8, -0.03883164, -0.02357202, -0.12550192)
 pixel_size = 0.003
 modulate = Color(0.35, 1, 0.25, 1)
 text = "9:00"
+font = ExtResource("2_qqegs")
+font_size = 64
+horizontal_alignment = 2
+
+[node name="AMPM" type="Label3D" parent="." unique_id=830612833]
+transform = Transform3D(-0.8, 0, -6.9938224e-08, 0, 0.8, 0, 6.9938224e-08, 0, -0.8, -0.28912982, -0.02357202, -0.12550192)
+pixel_size = 0.003
+modulate = Color(0.35, 1, 0.25, 1)
+text = "AM"
 font = ExtResource("2_qqegs")
 font_size = 64
 horizontal_alignment = 2

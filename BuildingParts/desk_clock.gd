@@ -1,6 +1,8 @@
 extends Node3D
 
 @onready var time_label: Label3D = get_node_or_null("TimeLabel")
+@onready var am_pm_label: Label3D = $AMPM
+
 
 const WORKDAY_START_MINUTES := 9 * 60
 const WORKDAY_END_MINUTES := 17 * 60
@@ -26,12 +28,13 @@ func _update_time(progress: float) -> void:
 	var day_minutes := roundi(lerpf(WORKDAY_START_MINUTES, WORKDAY_END_MINUTES, clampf(progress, 0.0, 1.0)))
 	var hour_24 := int(day_minutes / 60)
 	var minute := day_minutes % 60
-	var suffix := ""
+	var suffix := "AM"
 	if hour_24 >= 12:
-		suffix = ""
+		suffix = "PM"
 
 	var hour_12 := hour_24 % 12
 	if hour_12 == 0:
 		hour_12 = 12
 
-	time_label.text = "%d:%02d %s" % [hour_12, minute, suffix]
+	time_label.text = "%d:%02d" % [hour_12, minute]
+	am_pm_label.text = "%s" % [suffix]
